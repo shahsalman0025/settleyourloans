@@ -3,9 +3,9 @@ import shape1 from "./../assets/img/slider/m1.png";
 import shape2 from "./../assets/img/slider/m2.png";
 import shape3 from "./../assets/img/slider/m3.png";
 import Logo from "./../assets/img/logo/logo-image.png";
-import { addDoc, collection } from "firebase/firestore";
+// import { addDoc, collection } from "firebase/firestore";
 import { Link, useNavigate } from "react-router-dom";
-import { db } from "../firebase";
+// import { db } from "../firebase";
 import PELoader from "../Screens/Utils/PELoader";
 import validator from "validator";
 import Modal from "./Modal";
@@ -21,7 +21,7 @@ function Hero() {
   const [monthlyIncome, setMonthlyIncome] = useState();
   const [loader, setLoader] = useState(false);
   const [modal, setModal] = useState(true);
-  const collRef = collection(db, "home-form");
+  // const collRef = collection(db, "home-form");
 
   const validatePhoneNumber = (number) => {
     const isValidPhoneNumber = validator.isMobilePhone(number);
@@ -31,21 +31,21 @@ function Hero() {
     e.preventDefault();
     setLoader(true);
 
-    const docRef = await addDoc(collRef, {
-      name,
-      number,
-      email,
-      debtAmount,
-      areYouFacing,
-      date: Date.now(),
-      settlementProcess,
-      monthlyIncome,
-    });
+    // const docRef = await addDoc(collRef, {
+    //   name,
+    //   number,
+    //   email,
+    //   debtAmount,
+    //   areYouFacing,
+    //   date: Date.now(),
+    //   settlementProcess,
+    //   monthlyIncome,
+    // });
     window.setTimeout(() => {
       setLoader(false);
       localStorage.setItem("formName", name);
-      navigate(`/thanks/${docRef.id}`);
-      console.log("Document written with ID: ", docRef.id);
+      // navigate(`/thanks/${docRef.id}`);
+      // console.log("Document written with ID: ", docRef.id);
     }, 3000);
   };
   return (

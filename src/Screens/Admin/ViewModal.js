@@ -1,19 +1,19 @@
 import { Fragment, useEffect, useRef, useState } from "react";
 import { Dialog, Transition } from "@headlessui/react";
-import { doc, getDoc } from "firebase/firestore";
-import { db } from "../../firebase";
+// import { doc, getDoc } from "firebase/firestore";
+// import { db } from "../../firebase";
 
 function ViewModal({ setViewModal, viewModalId }) {
   const [data, setData] = useState([]);
   const getData = async () => {
-    const docRef = doc(db, "home-form", viewModalId);
-    const docSnap = await getDoc(docRef);
-    if (docSnap.exists()) {
-      setData(Object.entries(docSnap.data()));
-    } else {
-      // docSnap.data() will be undefined in this case
-      console.log("No such document!");
-    }
+    // const docRef = doc(db, "home-form", viewModalId);
+    // const docSnap = await getDoc(docRef);
+    // if (docSnap.exists()) {
+    //   setData(Object.entries(docSnap.data()));
+    // } else {
+    //   // docSnap.data() will be undefined in this case
+    //   console.log("No such document!");
+    // }
   };
 
   useEffect(() => {

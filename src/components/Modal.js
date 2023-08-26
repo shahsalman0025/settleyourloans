@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Header from "./Header";
-import { addDoc, collection } from "firebase/firestore";
-import { db } from "../firebase";
+// import { addDoc, collection } from "firebase/firestore";
+// import { db } from "../firebase";
 import { useNavigate } from "react-router-dom";
 
 function Modal() {
@@ -13,23 +13,23 @@ function Modal() {
   const [areYouFacing, setAreYouFacing] = useState("option-1");
   const [loader, setLoader] = useState(false);
   const [modal, setModal] = useState(true);
-  const collRef = collection(db, "home-form");
+  // const collRef = collection(db, "home-form");
   const formSubmitHandler = async (e) => {
     e.preventDefault();
     setLoader(true);
-    const docRef = await addDoc(collRef, {
-      name,
-      number,
-      email,
-      debtAmount,
-      areYouFacing,
-      date: Date.now(),
-    });
+    // const docRef = await addDoc(collRef, {
+    //   name,
+    //   number,
+    //   email,
+    //   debtAmount,
+    //   areYouFacing,
+    //   date: Date.now(),
+    // });
     window.setTimeout(() => {
       setLoader(false);
       localStorage.setItem("formName", name);
-      navigate(`/thanks/${docRef.id}`);
-      console.log("Document written with ID: ", docRef.id);
+      // navigate(`/thanks/${docRef.id}`);
+      // console.log("Document written with ID: ", docRef.id);
     }, 3000);
   };
   return (

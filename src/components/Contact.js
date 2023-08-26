@@ -1,7 +1,7 @@
-import { addDoc, collection } from "firebase/firestore";
+// import { addDoc, collection } from "firebase/firestore";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { db } from "../firebase";
+// import { db } from "../firebase";
 import PELoader from "../Screens/Utils/PELoader";
 
 function Contact() {
@@ -11,22 +11,22 @@ function Contact() {
   const [message, setMessage] = useState();
   const [number, setNumber] = useState();
   const [loader, setLoader] = useState(false);
-  const collRef = collection(db, "contact-form");
+  // const collRef = collection(db, "contact-form");
   const formSubmitHandler = async (e) => {
     e.preventDefault();
     setLoader(true);
-    const docRef = await addDoc(collRef, {
-      name,
-      email,
-      number,
-      message,
-      date: Date.now(),
-    });
+    // const docRef = await addDoc(collRef, {
+    //   name,
+    //   email,
+    //   number,
+    //   message,
+    //   date: Date.now(),
+    // });
     window.setTimeout(() => {
       setLoader(false);
       localStorage.setItem("formName", name);
-      navigate(`/thanks/${docRef.id}`);
-      console.log("Document written with ID: ", docRef.id);
+      // navigate(`/thanks/${docRef.id}`);
+      // console.log("Document written with ID: ", docRef.id);
     }, 3000);
   };
   return (

@@ -1,20 +1,20 @@
-import { signOut } from "firebase/auth";
+// import { signOut } from "firebase/auth";
 import React from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { auth } from "../firebase";
+// import { auth } from "../firebase";
 import Logo from "./../assets/img/logo/logo.png";
 function HeaderAdmin() {
   const navigate = useNavigate();
   const signOutUser = async (e) => {
     e.preventDefault();
-    signOut(auth)
-      .then(() => {
-        navigate("/login");
-        // Sign-out successful.
-      })
-      .catch((error) => {
-        // An error happened.
-      });
+    // // signOut(auth)
+    //   .then(() => {
+    //     navigate("/login");
+    //     // Sign-out successful.
+    //   })
+    //   .catch((error) => {
+    //     // An error happened.
+    //   });
   };
 
   return (

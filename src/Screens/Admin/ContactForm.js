@@ -1,44 +1,44 @@
 import { onAuthStateChanged } from "firebase/auth";
-import { collection, onSnapshot } from "firebase/firestore";
+// import { collection, onSnapshot } from "firebase/firestore";
 import React, { useEffect, useState } from "react";
 import HeaderAdmin from "../../components/HeaderAdmin";
-import { auth, db } from "../../firebase";
+// import { auth, db } from "../../firebase";
 import ContactFormData from "./ContactFormData";
 
 function ContactForm() {
   const [homeData, setHomeData] = useState([]);
-  const collRefHome = collection(db, "contact-form");
+  // const collRefHome = collection(db, "contact-form");
   const [user, setUser] = useState(false);
 
   useEffect(() => {
-    onSnapshot(collRefHome, (snapshot) => {
-      let data = [];
-      let dataSorted = [];
-      snapshot.docs.forEach((doc) => {
-        if (doc.data().date) {
-          dataSorted.push({ ...doc.data(), id: doc.id });
-        } else {
-          data.push({ ...doc.data(), id: doc.id });
-        }
-      });
-      dataSorted.sort(function (x, y) {
-        return y.date - x.date;
-      });
-      setHomeData(dataSorted.concat(data));
-    });
+    // onSnapshot(collRefHome, (snapshot) => {
+    //   let data = [];
+    //   let dataSorted = [];
+    //   snapshot.docs.forEach((doc) => {
+    //     if (doc.data().date) {
+    //       dataSorted.push({ ...doc.data(), id: doc.id });
+    //     } else {
+    //       data.push({ ...doc.data(), id: doc.id });
+    //     }
+    //   });
+    //   dataSorted.sort(function (x, y) {
+    //     return y.date - x.date;
+    //   });
+    //   setHomeData(dataSorted.concat(data));
+    // });
   }, []);
   useEffect(() => {
-    onAuthStateChanged(auth, (user) => {
-      if (user) {
-        // User is signed in, see docs for a list of available properties
-        // https://firebase.google.com/docs/reference/js/firebase.User
-        const uid = user.uid;
-        setUser(true);
-        // ...
-      } else {
-        setUser(false);
-      }
-    });
+    // onAuthStateChanged(auth, (user) => {
+    //   if (user) {
+    //     // User is signed in, see docs for a list of available properties
+    //     // https://firebase.google.com/docs/reference/js/firebase.User
+    //     const uid = user.uid;
+    //     setUser(true);
+    //     // ...
+    //   } else {
+    //     setUser(false);
+    //   }
+    // });
   }, []);
   return (
     <>

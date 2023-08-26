@@ -1,8 +1,8 @@
-import { onAuthStateChanged, signInWithEmailAndPassword } from "firebase/auth";
+// import { onAuthStateChanged, signInWithEmailAndPassword } from "firebase/auth";
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Header from "../../components/Header";
-import { auth } from "../../firebase";
+// import { auth } from "../../firebase";
 import PELoader from "../Utils/PELoader";
 
 function Login() {
@@ -11,33 +11,33 @@ function Login() {
   const [password, setPassword] = useState();
   const [loader, setLoader] = useState(false);
   useEffect(() => {
-    onAuthStateChanged(auth, (user) => {
-      if (user) {
-        navigate("/admin");
-        // User is signed in, see docs for a list of available properties
-        // https://firebase.google.com/docs/reference/js/firebase.User
-        const uid = user.uid;
-        // ...
-      }
-    });
+    // onAuthStateChanged(auth, (user) => {
+    //   if (user) {
+    //     navigate("/admin");
+    //     // User is signed in, see docs for a list of available properties
+    //     // https://firebase.google.com/docs/reference/js/firebase.User
+    //     const uid = user.uid;
+    //     // ...
+    //   }
+    // });
   }, []);
 
   const submitBtn = async (e) => {
     e.preventDefault();
     setLoader(true);
-    signInWithEmailAndPassword(auth, email, password)
-      .then((userCredential) => {
-        // Signed in
-        const user = userCredential.user;
-        setLoader(false);
-        navigate("/admin");
-        // ...
-      })
-      .catch((error) => {
-        setLoader(false);
-        const errorCode = error.code;
-        const errorMessage = error.message;
-      });
+    // signInWithEmailAndPassword(auth, email, password)
+    //   .then((userCredential) => {
+    //     // Signed in
+    //     const user = userCredential.user;
+    //     setLoader(false);
+    //     navigate("/admin");
+    //     // ...
+    //   })
+    //   .catch((error) => {
+    //     setLoader(false);
+    //     const errorCode = error.code;
+    //     const errorMessage = error.message;
+    //   });
   };
   return (
     <>

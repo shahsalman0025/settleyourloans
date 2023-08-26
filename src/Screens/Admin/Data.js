@@ -1,15 +1,15 @@
-import { onAuthStateChanged, signOut } from "firebase/auth";
-import { collection, onSnapshot } from "firebase/firestore";
+// import { onAuthStateChanged, signOut } from "firebase/auth";
+// import { collection, onSnapshot } from "firebase/firestore";
 import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import Header from "../../components/Header";
 import HeaderAdmin from "../../components/HeaderAdmin";
-import { auth, db } from "../../firebase";
+// import { auth, db } from "../../firebase";
 
 function Data() {
   const navigate = useNavigate();
   const [contactData, setContactData] = useState([]);
-  const collRefContact = collection(db, "contact-form");
+  // const collRefContact = collection(db, "contact-form");
   const [form, setForm] = useState(false);
   const [formType, setFormType] = useState();
   const [user, setUser] = useState(false);
@@ -22,29 +22,29 @@ function Data() {
   };
 
   useEffect(() => {
-    onAuthStateChanged(auth, (user) => {
-      if (user) {
-        // User is signed in, see docs for a list of available properties
-        // https://firebase.google.com/docs/reference/js/firebase.User
-        const uid = user.uid;
-        setUser(true);
-        // ...
-      } else {
-        setUser(false);
-      }
-    });
+    // onAuthStateChanged(auth, (user) => {
+    //   if (user) {
+    //     // User is signed in, see docs for a list of available properties
+    //     // https://firebase.google.com/docs/reference/js/firebase.User
+    //     const uid = user.uid;
+    //     setUser(true);
+    //     // ...
+    //   } else {
+    //     setUser(false);
+    //   }
+    // });
   }, []);
 
   const signOutUser = async (e) => {
     e.preventDefault();
-    signOut(auth)
-      .then(() => {
-        navigate("/login");
-        // Sign-out successful.
-      })
-      .catch((error) => {
-        // An error happened.
-      });
+    // signOut(auth)
+    // .then(() => {
+    //   navigate("/login");
+    //   // Sign-out successful.
+    // })
+    // .catch((error) => {
+    //   // An error happened.
+    // });
   };
   return (
     <>
