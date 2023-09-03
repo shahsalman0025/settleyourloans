@@ -1,51 +1,50 @@
-import { onAuthStateChanged } from "firebase/auth";
-// import { collection, onSnapshot } from "firebase/firestore";
 import React, { useEffect, useState } from "react";
 import HeaderAdmin from "../../components/HeaderAdmin";
-// import { auth, db } from "../../firebase";
+import { getAuth, onAuthStateChanged } from "firebase/auth";
 import ContactFormData from "./ContactFormData";
+import { db } from "../../firebase";
+import { collection, getDocs } from "firebase/firestore";
+import PELoader from "../../Screens/Utils/PELoader";
 
 function ContactForm() {
   const [homeData, setHomeData] = useState([]);
-  // const collRefHome = collection(db, "contact-form");
-  const [user, setUser] = useState(false);
+  const [user, setuser] = useState(null);
+  const [loader, setLoader] = useState(false);
 
-  useEffect(() => {
-    // onSnapshot(collRefHome, (snapshot) => {
-    //   let data = [];
-    //   let dataSorted = [];
-    //   snapshot.docs.forEach((doc) => {
-    //     if (doc.data().date) {
-    //       dataSorted.push({ ...doc.data(), id: doc.id });
-    //     } else {
-    //       data.push({ ...doc.data(), id: doc.id });
-    //     }
-    //   });
-    //   dataSorted.sort(function (x, y) {
-    //     return y.date - x.date;
-    //   });
-    //   setHomeData(dataSorted.concat(data));
-    // });
-  }, []);
-  useEffect(() => {
-    // onAuthStateChanged(auth, (user) => {
-    //   if (user) {
-    //     // User is signed in, see docs for a list of available properties
-    //     // https://firebase.google.com/docs/reference/js/firebase.User
-    //     const uid = user.uid;
-    //     setUser(true);
-    //     // ...
-    //   } else {
-    //     setUser(false);
-    //   }
-    // });
-  }, []);
+  const auth = getAuth();
+    useEffect(() => {
+      getUserAuth();
+      FetchContactFormData();
+      }, []);
+  const getUserAuth = async () => {
+    onAuthStateChanged(auth, (user) => {
+    console.log(user)
+    if (user===null) {
+      setuser(false)
+      setLoader(true);
+    } else {
+      setuser(true)
+    
+    }
+  });
+}
+  const FetchContactFormData = async () => {
+    await getDocs(collection(db, "footerfromrecord"))
+        .then((querySnapshot)=>{               
+            const newData = querySnapshot.docs
+            .map((doc) => ({...doc.data(), id:doc.id }));
+            setHomeData(newData);                
+        })
+   
+}
   return (
     <>
       {user ? (
         <>
+
           <HeaderAdmin />
           <div className="max-w-7xl mx-auto sm:px-6 lg:px-8 pt-52">
+            
             <div className="flex flex-col">
               <div className="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
                 <div className="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
@@ -86,6 +85,7 @@ function ContactForm() {
                         </tr>
                       </thead>
                       <tbody>
+                      {loader ? (<PELoader/>):(<>
                         {homeData &&
                           homeData.map((person, personIdx) => (
                             <ContactFormData
@@ -93,6 +93,8 @@ function ContactForm() {
                               personIdx={personIdx}
                             />
                           ))}
+                      </>)}
+                        
                       </tbody>
                     </table>
                   </div>

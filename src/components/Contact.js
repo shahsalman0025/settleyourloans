@@ -1,9 +1,10 @@
 // import { addDoc, collection } from "firebase/firestore";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-// import { db } from "../firebase";
 import PELoader from "../Screens/Utils/PELoader";
-
+import app from "../firebase";
+import { db } from "../firebase";
+import { addDoc, collection,getDocs, Timestamp } from "firebase/firestore";
 function Contact() {
   const navigate = useNavigate();
   const [name, setName] = useState();
@@ -13,15 +14,27 @@ function Contact() {
   const [loader, setLoader] = useState(false);
   // const collRef = collection(db, "contact-form");
   const formSubmitHandler = async (e) => {
-    e.preventDefault();
+    e.preventDefault()
     setLoader(true);
-    // const docRef = await addDoc(collRef, {
-    //   name,
-    //   email,
-    //   number,
-    //   message,
-    //   date: Date.now(),
-    // });
+
+    try {
+      await addDoc(collection(db, 'footerfromrecord'), {
+        name: name,
+        email: email,
+        number: number,
+        message: message,
+        created: Date.now()
+      }).then((val)=>{
+        setLoader(true);
+        navigate('/thanks/'+val.id);
+      })
+      
+    } catch (error) {
+      setLoader(false);
+      alert(error)
+    }
+    
+   
     window.setTimeout(() => {
       setLoader(false);
       localStorage.setItem("formName", name);

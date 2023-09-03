@@ -1,69 +1,50 @@
-// import { onAuthStateChanged } from "firebase/auth";
-// import {
-//   collection,
-//   deleteDoc,
-//   doc,
-//   onSnapshot,
-//   query,
-//   orderBy,
-// } from "firebase/firestore";
 import React, { useEffect, useState } from "react";
 import HeaderAdmin from "../../components/HeaderAdmin";
-// import { auth, db } from "../../firebase";
 import HomeFormData from "./HomeFormData";
 import ViewModal from "./ViewModal";
+import { getAuth, onAuthStateChanged } from "firebase/auth";
+import { collection, deleteDoc, doc, getDocs } from "firebase/firestore";
+import { db } from "../../firebase";
 
 function HomeForm() {
   const [sortedData, setSortedData] = useState([]);
   const [homeData, setHomeData] = useState([]);
-  // const collRefHome = collection(db, "home-form");
-  const [user, setUser] = useState(false);
+  const [user, setUser] = useState(null);
   const [viewModal, setViewModal] = useState(false);
   const [viewModalId, setViewModalId] = useState();
-  useEffect(() => {
-    // onSnapshot(collRefHome, (snapshot) => {
-    //   let data = [];
-    //   let dataSorted = [];
-    //   snapshot.docs.forEach((doc) => {
-    //     if (doc.data().date) {
-    //       dataSorted.push({ ...doc.data(), id: doc.id });
-    //     } else {
-    //       data.push({ ...doc.data(), id: doc.id });
-    //     }
-    //   });
-    //   console.log(dataSorted);
-    //   console.log(data);
-    //   dataSorted.sort(function (x, y) {
-    //     return y.date - x.date;
-    //   });
-    //   setHomeData(dataSorted.concat(data));
-    // });
-  }, []);
-  useEffect(() => {
-    // onAuthStateChanged(auth, (user) => {
-    //   if (user) {
-    //     // User is signed in, see docs for a list of available properties
-    //     // https://firebase.google.com/docs/reference/js/firebase.User
-    //     const uid = user.uid;
-    //     setUser(true);
-    //     // ...
-    //   } else {
-    //     setUser(false);
-    //   }
-    // });
-  }, []);
-
   const viewBtnClick = async (e) => {
     setViewModalId(e.target.id);
     setViewModal(true);
   };
-
+  const auth = getAuth();
+  useEffect(() => {
+      getUserAuth();
+      FetchHomeFormData();
+    }, []);
+  const getUserAuth = async() => {
+    onAuthStateChanged(auth, (user) => {
+      if (user === null) {
+        setUser(false)
+      }
+      else{
+        setUser(true)
+      }
+    });
+  }
+  const FetchHomeFormData = async () => {
+    await getDocs(collection(db, "homefromrecord"))
+        .then((querySnapshot)=>{               
+            const newData = querySnapshot.docs
+                .map((doc) => ({...doc.data(), id:doc.id }));
+            setHomeData(newData);                
+        })}
   const deleteBtnClick = async (e) => {
     e.preventDefault();
-    // const docRef = doc(db, "home-form", e.target.id);
-    // await deleteDoc(docRef).then(() => {
-    //   alert("Deleted Sucessfully");
-    // });
+    const docRef = doc(db, "homefromrecord", e.target.id);
+    await deleteDoc(docRef).then(() => {
+      alert("Deleted Sucessfully");
+    FetchHomeFormData();
+    });
   };
   return (
     <>

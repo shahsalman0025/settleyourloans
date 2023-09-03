@@ -6,7 +6,8 @@ function Thanks() {
   const { formId } = useParams();
   const [name, setName] = useState();
   useEffect(() => {
-    setName(localStorage.getItem("formName"));
+    setName(
+    localStorage.getItem("formName"));
     window.scrollTo(0, 0);
   }, []);
   return (

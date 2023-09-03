@@ -4,7 +4,6 @@ import { RotatingLines } from "react-loader-spinner";
 function PELoader() {
   return (
     <div className="pe-loader">
-      {" "}
       <RotatingLines
         strokeColor="grey"
         strokeWidth="5"

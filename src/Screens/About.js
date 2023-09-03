@@ -1,11 +1,16 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useEffect } from "react";
+import { Link, Navigate } from "react-router-dom";
 import Header from "../components/Header";
+import { getAuth, onAuthStateChanged } from "firebase/auth";
 
 function About() {
+  // if(true){
+  // return <Navigate to="/"  />;
+
+  // }
   return (
     <>
-      <Header />{" "}
+      <Header />
       <div className="about-5__area about-5__plr ">
         <div className="container-fluid pt-24">
           <div className="about-5__border">

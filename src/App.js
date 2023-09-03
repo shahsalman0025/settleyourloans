@@ -11,7 +11,8 @@ import "./assets/css/magnific-popup.css";
 import "./assets/css/spacing.css";
 import "./assets/css/style.css";
 import "./App.css";
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import { useState } from "react";
+import { BrowserRouter as Router, Route, Routes,  } from "react-router-dom";
 import Home from "./Screens/Home";
 import DebtFree from "./Screens/Services/DebtFree";
 import { Footer } from "./components/Footer";
@@ -48,10 +49,11 @@ function App() {
           <Route path="/service/:slug" element={<ServiceSlug />}></Route>
           <Route element={<Thanks />} path="/thanks/:formId"></Route>
           <Route path="/login" element={<Login />}></Route>
-          <Route path="/admin" element={<Data />}></Route>
-          <Route path="/admin/home" element={<HomeForm />}></Route>
+          <Route path="/admin" element={ <Data />}></Route>
+          <Route path="/admin/home" element={ <HomeForm />}></Route>
           <Route path="/admin/contact" element={<ContactForm />}></Route>
           <Route path="*" element={<NotFound />}></Route>
+          <Route path="/thanks" element={<Thanks />}></Route>
         </Routes>
         <FooterTwo />
       </Router>

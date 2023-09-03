@@ -23,7 +23,7 @@ function HomeFormData({ person, personIdx, deleteBtnClick, viewBtnClick }) {
         ₹{person.debtAmount}
       </td>
       <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-        {person.areYouFacing === "f-option" ? "Yes" : "No"}
+        {person.areYouFacing === true ? "Yes" : "No"}
       </td>
       <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
         <a

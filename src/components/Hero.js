@@ -3,12 +3,12 @@ import shape1 from "./../assets/img/slider/m1.png";
 import shape2 from "./../assets/img/slider/m2.png";
 import shape3 from "./../assets/img/slider/m3.png";
 import Logo from "./../assets/img/logo/logo-image.png";
-// import { addDoc, collection } from "firebase/firestore";
 import { Link, useNavigate } from "react-router-dom";
-// import { db } from "../firebase";
 import PELoader from "../Screens/Utils/PELoader";
 import validator from "validator";
 import Modal from "./Modal";
+import { db } from "../firebase";
+import { addDoc, collection, Timestamp } from "firebase/firestore";
 
 function Hero() {
   const navigate = useNavigate();
@@ -16,12 +16,12 @@ function Hero() {
   const [number, setNumber] = useState();
   const [email, setEmail] = useState();
   const [debtAmount, setDebtAmount] = useState();
-  const [areYouFacing, setAreYouFacing] = useState("option-1");
+  const [areYouFacing, setAreYouFacing] = useState(true);
   const [settlementProcess, setSettlementProcess] = useState();
   const [monthlyIncome, setMonthlyIncome] = useState();
   const [loader, setLoader] = useState(false);
   const [modal, setModal] = useState(true);
-  // const collRef = collection(db, "home-form");
+
 
   const validatePhoneNumber = (number) => {
     const isValidPhoneNumber = validator.isMobilePhone(number);
@@ -29,23 +29,28 @@ function Hero() {
   };
   const formSubmitHandler = async (e) => {
     e.preventDefault();
-    setLoader(true);
-
-    // const docRef = await addDoc(collRef, {
-    //   name,
-    //   number,
-    //   email,
-    //   debtAmount,
-    //   areYouFacing,
-    //   date: Date.now(),
-    //   settlementProcess,
-    //   monthlyIncome,
-    // });
+    try {
+      await addDoc(collection(db, 'homefromrecord'), {
+        name: name,
+        email: email,
+        number: number,
+        debtAmount: debtAmount,
+        areYouFacing: areYouFacing,
+        settlementProcess: settlementProcess,
+        monthlyIncome: monthlyIncome,
+        date: Date.now()
+      }).then((val)=>{
+        navigate('/thanks/'+val.id);
+        setLoader(true);
+        console.log(val.id)
+      })
+      
+    } catch (error) {
+      alert(error)
+    }
     window.setTimeout(() => {
       setLoader(false);
       localStorage.setItem("formName", name);
-      // navigate(`/thanks/${docRef.id}`);
-      // console.log("Document written with ID: ", docRef.id);
     }, 3000);
   };
   return (
@@ -407,7 +412,7 @@ function Hero() {
                             tabIndex={1}
                             defaultChecked
                             onChange={(e) => {
-                              setAreYouFacing(e.target.id);
+                              setAreYouFacing(true);
                             }}
                           />
                           <span>Yes</span>
@@ -419,7 +424,7 @@ function Hero() {
                             name="selector"
                             tabIndex={2}
                             onChange={(e) => {
-                              setAreYouFacing(e.target.id);
+                              setAreYouFacing(false);
                             }}
                           />
                           <span>No</span>

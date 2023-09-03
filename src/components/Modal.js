@@ -1,7 +1,5 @@
 import React, { useState } from "react";
 import Header from "./Header";
-// import { addDoc, collection } from "firebase/firestore";
-// import { db } from "../firebase";
 import { useNavigate } from "react-router-dom";
 
 function Modal() {
@@ -17,24 +15,19 @@ function Modal() {
   const formSubmitHandler = async (e) => {
     e.preventDefault();
     setLoader(true);
-    // const docRef = await addDoc(collRef, {
-    //   name,
-    //   number,
-    //   email,
-    //   debtAmount,
-    //   areYouFacing,
-    //   date: Date.now(),
-    // });
+    console.log(
+      name,
+      email,
+      number,
+      areYouFacing
+    )
     window.setTimeout(() => {
       setLoader(false);
       localStorage.setItem("formName", name);
-      // navigate(`/thanks/${docRef.id}`);
-      // console.log("Document written with ID: ", docRef.id);
     }, 3000);
   };
   return (
     <div className="some-modal">
-      {" "}
       <form className="w-full max-w-xl bg-white p-5 rounded-xl">
         <h1 className="mb-12">Just a few more steps</h1>
 
@@ -50,7 +43,11 @@ function Modal() {
               className="appearance-none block w-full bg-white text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
               id="grid-first-name"
               type="text"
-              placeholder="Jane"
+              placeholder="Name"
+              required
+              onChange={(e) => {
+                setName(e.target.value);
+              }}
             />
           </div>
         </div>
@@ -65,8 +62,13 @@ function Modal() {
             <input
               className="appearance-none block w-full bg-white text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
               id="grid-password"
-              type="number"
-              placeholder=""
+              type="email"
+              placeholder="Email"
+              required
+              onChange={(e) => {
+                setEmail(e.target.value);
+              }}
+
             />
           </div>
         </div>
@@ -82,7 +84,11 @@ function Modal() {
               className="appearance-none block w-full bg-white text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
               id="grid-password"
               type="number"
-              placeholder=""
+              placeholder="91XXXXXXX"
+              required
+              onChange={(e) => {
+                setNumber(e.target.value);
+              }}
             />
           </div>
         </div>
@@ -101,15 +107,19 @@ function Modal() {
                 className="block appearance-none w-full bg-white border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
                 id="grid-state"
               >
-                <option>New Mexico</option>
-                <option>Missouri</option>
-                <option>Texas</option>
+                <option value="option-1">New Mexico</option>
+                <option value="option-2">Missouri</option>
+                <option value="option-3">Texas</option>
               </select>
               <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
                 <svg
                   className="fill-current h-4 w-4"
                   xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 20 20"
+                  required
+                  onChange={(e) => {
+                    setAreYouFacing(e.target.value);
+                  }}
                 >
                   <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" />
                 </svg>
@@ -121,6 +131,7 @@ function Modal() {
         <button
           className="main-btn-sm tp-btn-hover alt-color my-12"
           type="submit"
+          onClick={formSubmitHandler}
         >
           <span>Send Request</span>
           <b />

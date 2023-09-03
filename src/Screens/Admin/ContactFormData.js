@@ -1,14 +1,21 @@
-import React from "react";
+import { Timestamp } from "firebase/firestore";
+import React, { useState } from "react";
+import PELoader from "../../Screens/Utils/PELoader";
+
 
 function ContactFormData({ person, personIdx }) {
-  const d = new Date(person.date);
+  const [loader, setLoader] = useState(false);
+  const d = new Date(person.created);
   return (
-    <tr
+    <>
+    {setLoader ? (<>
+    
+      <tr
       key={person.email}
       className={personIdx % 2 === 0 ? "bg-white" : "bg-gray-50"}
     >
       <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
-        {person.date ? d.toDateString() : "No Date"}
+        {person.created ? d.toDateString() : "No Date"}
       </td>
       <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
         {person.name}
@@ -23,6 +30,11 @@ function ContactFormData({ person, personIdx }) {
         {person.message}
       </td>
     </tr>
+    
+    </>):(<PELoader></PELoader>)}
+
+    
+    </>
   );
 }
 
