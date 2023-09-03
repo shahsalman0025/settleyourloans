@@ -33,11 +33,9 @@ function Contact() {
       setLoader(false);
       alert(error)
     }
-    
-   
+    localStorage.setItem("formName", name);
     window.setTimeout(() => {
       setLoader(false);
-      localStorage.setItem("formName", name);
       // navigate(`/thanks/${docRef.id}`);
       // console.log("Document written with ID: ", docRef.id);
     }, 3000);
