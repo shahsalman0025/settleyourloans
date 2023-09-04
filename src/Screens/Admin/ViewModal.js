@@ -1,5 +1,7 @@
 import { Fragment, useEffect, useRef, useState } from "react";
 import { Dialog, Transition } from "@headlessui/react";
+import { QuerySnapshot, collection, getDocs } from "firebase/firestore";
+import { db } from "../../firebase";
 // import { doc, getDoc } from "firebase/firestore";
 // import { db } from "../../firebase";
 
@@ -15,12 +17,19 @@ function ViewModal({ setViewModal, viewModalId }) {
     //   console.log("No such document!");
     // }
   };
+  const FetchHomeFormData = async ()=>{
+    await getDocs(collection(db, "homeformrecord"))
+    .then((querySnapshot)=>{               
+      const newData = querySnapshot.docs
+          .map((doc) => ({...doc.data(), id:doc.id }));
+      setData(newData);                
+  })}
 
-  useEffect(() => {
-    if (viewModalId) {
-      getData();
-    }
-  }, []);
+  // useEffect(() => {
+  //   if (viewModalId) {
+  //     getData();
+  //   }
+  // }, []);
 
   return (
     <div className="some-modal">
@@ -39,20 +48,21 @@ function ViewModal({ setViewModal, viewModalId }) {
                         scope="col"
                         className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
                       >
-                        Data
+                        Settlement Process
                       </th>
                       <th
                         scope="col"
                         className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
                       >
-                        Value
+                        Monthly Income
                       </th>
                     </tr>
                   </thead>
                   <tbody>
                     {data &&
-                      data.map((person) => (
-                        <tr key={person.email} className="bg-white">
+                      data.map((person, personIdx) => (
+                
+                        <tr key={personIdx} className="bg-white">
                           <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
                             {person[0]}
                           </td>

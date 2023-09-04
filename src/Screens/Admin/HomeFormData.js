@@ -23,9 +23,15 @@ function HomeFormData({ person, personIdx, deleteBtnClick, viewBtnClick }) {
         ₹{person.debtAmount}
       </td>
       <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-        {person.areYouFacing === true ? "Yes" : "No"}
+        {person.monthlyIncome}
       </td>
       <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+        {person.settlementProcess}
+      </td>
+      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+        {person.areYouFacing === true ? "Yes" : "No"}
+      </td>
+      {/* <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
         <a
           href="#"
           id={person.id}
@@ -34,7 +40,7 @@ function HomeFormData({ person, personIdx, deleteBtnClick, viewBtnClick }) {
         >
           View
         </a>
-      </td>
+      </td> */}
       <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
         <a
           href="#"

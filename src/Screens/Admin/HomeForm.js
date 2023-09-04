@@ -7,15 +7,11 @@ import { collection, deleteDoc, doc, getDocs } from "firebase/firestore";
 import { db } from "../../firebase";
 
 function HomeForm() {
-  const [sortedData, setSortedData] = useState([]);
   const [homeData, setHomeData] = useState([]);
   const [user, setUser] = useState(null);
   const [viewModal, setViewModal] = useState(false);
   const [viewModalId, setViewModalId] = useState();
-  const viewBtnClick = async (e) => {
-    setViewModalId(e.target.id);
-    setViewModal(true);
-  };
+  
   const auth = getAuth();
   useEffect(() => {
       getUserAuth();
@@ -46,16 +42,20 @@ function HomeForm() {
     FetchHomeFormData();
     });
   };
+  // const viewBtnClick = async (e) => {
+  //   setViewModalId(e.target.id);
+  //   setViewModal(true);
+  // };
   return (
     <>
       {user ? (
         <>
-          {viewModal && (
+          {/* {viewModal && (
             <ViewModal
               setViewModal={setViewModal}
               viewModalId={viewModalId && viewModalId}
             />
-          )}
+          )} */}
 
           <HeaderAdmin />
           <div className="max-w-7xl mx-auto sm:px-6 lg:px-8 pt-52">
@@ -96,18 +96,31 @@ function HomeForm() {
                           >
                             Total Debt Amount
                           </th>
+                          
+                            <th
+                            scope="col"
+                            className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                          >
+                            Monthly Income
+                          </th>
+                          <th
+                            scope="col"
+                            className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                          >
+                            Settlement Process
+                          </th>
                           <th
                             scope="col"
                             className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
                           >
                             Facing Issue
                           </th>
-                          <th
+                          {/* <th
                             scope="col"
                             className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
                           >
                             View
-                          </th>
+                          </th> */}
                           <th
                             scope="col"
                             className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
@@ -123,7 +136,7 @@ function HomeForm() {
                               person={person}
                               personIdx={personIdx}
                               deleteBtnClick={deleteBtnClick}
-                              viewBtnClick={viewBtnClick}
+                              // viewBtnClick={viewBtnClick}
                             />
                           ))}
                       </tbody>
