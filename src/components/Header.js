@@ -3,15 +3,13 @@ import { Link } from "react-router-dom";
 import Logo from "./../assets/img/logo/logo.png";
 import { GraphQLClient, gql } from "graphql-request";
 
-const graphcms = new GraphQLClient(
-  "https://api-ap-south-1.hygraph.com/v2/clf3jxqh547va01t7126u21j0/master"
-);
+const graphcms = new GraphQLClient(`${process.env.REACT_APP_GRAPH_API_KEY}`);
 
 const QUERY = gql`
   {
     services {
       title
-      icon
+    
       slug
       des
       coverPhoto {

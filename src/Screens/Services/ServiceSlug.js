@@ -93,13 +93,13 @@ function ServiceSlug() {
                 </div>
                 <div className="service-details__area service-details__plr mb-30">
                   <div className="container-fluid">
-                    {/* {postData.service && (
+                    {postData.service && (
                       <div
                         dangerouslySetInnerHTML={{
                           __html: postData.service.content.html,
                         }}
                       ></div>
-                    )} */}
+                    )}
 
                     {postData.service.content && (
                       <RichText
@@ -118,7 +118,7 @@ function ServiceSlug() {
                         }}
                       />
                     )}
-                    {/* <RichText content={postData.service.content} /> */}
+                    <RichText content={postData.service.content} />
                   </div>
                 </div>
               </div>
