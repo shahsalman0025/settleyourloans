@@ -59,6 +59,7 @@ function ServicesGraph() {
         <div className="row">
           {posts &&
             posts.map((post) => (
+              
               <div
                 className="col-xl-4 col-lg-6 col-md-6 mb-30 wow tpfadeUp"
                 data-wow-duration=".9s"
@@ -99,7 +100,7 @@ function ServicesGraph() {
                       <i className="fal fa-arrow-right" />
                     </Link>
                   </div>
-                </div>{" "}
+                </div>
               </div>
             ))}
         </div>
