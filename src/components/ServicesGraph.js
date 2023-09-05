@@ -8,7 +8,7 @@ const QUERY = gql`
   {
     services {
       title
-      icon
+      
       slug
       des
       coverPhoto {
@@ -81,14 +81,15 @@ function ServicesGraph() {
                     <div className="service__inner-icon">
                       <span>
                         <a href="#">
-                          <i className={`fal ${post.icon}`} />
+                          {/* <i className={`fal ${post.icon}`} /> */}
+                          <i className="fa-solid fa-user" />
                         </a>
                       </span>
                     </div>
                   </div>
                   <div className="service__content">
                     <h4 className="service__title title-color-1">
-                      <Link to="/debt-free-solutions">{post.title}</Link>
+                      <Link to={`/service/${post.slug}`}>{post.title}</Link>
                     </h4>
                     <p>{post.des}</p>
                   </div>

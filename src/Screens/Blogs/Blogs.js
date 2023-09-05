@@ -68,9 +68,7 @@ function Blogs() {
                         <h3 className="postbox__title">
                           <Link to={`/blog/${p.slug}`}>{p.title}</Link>
                         </h3>
-                        {/* <div className="postbox__text">
-                          <p>{p.content.text}</p>
-                        </div> */}
+
                       </div>
                     </article>
                   ))}

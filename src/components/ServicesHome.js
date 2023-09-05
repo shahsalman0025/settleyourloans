@@ -8,7 +8,7 @@ const QUERY = gql`
   {
     services {
       title
-      icon
+      
       slug
       content {
         html
