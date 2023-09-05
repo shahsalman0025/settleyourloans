@@ -101,7 +101,7 @@ function ServiceSlug() {
                       ></div>
                     )}
 
-                    {/* {postData.service.content && (
+                    {postData.service.content && (
                       <RichText
                         content={postData.service.content.raw.children}
                         renderers={{
@@ -118,7 +118,7 @@ function ServiceSlug() {
                         }}
                       />
                     )}
-                    <RichText content={postData.service.content} /> */}
+                    {/* <RichText content={postData.service.content} /> */}
                   </div>
                 </div>
               </div>
