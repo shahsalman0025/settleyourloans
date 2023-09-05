@@ -32,8 +32,8 @@ function ServicesHome() {
   return (
     <div className="service__area service__space service__mlr grey-bg pt-195 pb-70 p-relative">
       {posts &&
-        posts.map((post) => {
-          console.log(post);
+        posts.map((posts) => {
+          console.log(posts);
         })}
       <div className="service__shape-1">
         <img src="assets/img/service/sv-shape-1.png" alt="" />
