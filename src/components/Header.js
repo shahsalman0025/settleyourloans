@@ -15,9 +15,6 @@ const QUERY = gql`
       coverPhoto {
         url
       }
-      content {
-        html
-      }
     }
   }
 `;
