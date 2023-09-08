@@ -8,35 +8,41 @@ import PELoader from "../../Screens/Utils/PELoader";
 
 function ContactForm() {
   const [homeData, setHomeData] = useState([]);
-  const [user, setuser] = useState(null);
-  const [loader, setLoader] = useState(false);
+  const [user, setuser] = useState(true);
+  const [loader, setLoader] = useState(true);
 
   const auth = getAuth();
-    useEffect(() => {
-      getUserAuth();
-      FetchContactFormData();
-      }, []);
+  useEffect(() => {
+    getUserAuth();
+
+  }, []);
   const getUserAuth = async () => {
+
     onAuthStateChanged(auth, (user) => {
-    console.log(user)
-    if (user===null) {
-      setuser(false)
-      setLoader(true);
-    } else {
-      setuser(true)
-    
-    }
-  });
-}
+      if (user !== null) {
+        setuser(true)
+        FetchContactFormData();
+
+      } else {
+        setuser(false)
+        // setLoader(false);
+      }
+    });
+  }
   const FetchContactFormData = async () => {
+    setLoader(true);
     await getDocs(collection(db, "footerfromrecord"))
-        .then((querySnapshot)=>{               
-            const newData = querySnapshot.docs
-            .map((doc) => ({...doc.data(), id:doc.id }));
-            setHomeData(newData);                
-        })
-   
-}
+      .then((querySnapshot) => {
+        const newData = querySnapshot.docs
+          .map((doc) => ({ ...doc.data(), id: doc.id }));
+
+        newData.sort((a, b) => new Date(b.created) - new Date(a.created));
+        setHomeData(newData)
+        setLoader(false)
+
+      })
+
+  }
   return (
     <>
       {user ? (
@@ -44,7 +50,7 @@ function ContactForm() {
 
           <HeaderAdmin />
           <div className="max-w-7xl mx-auto sm:px-6 lg:px-8 pt-52">
-            
+
             <div className="flex flex-col">
               <div className="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
                 <div className="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
@@ -85,16 +91,16 @@ function ContactForm() {
                         </tr>
                       </thead>
                       <tbody>
-                      {loader ? (<PELoader/>):(<>
-                        {homeData &&
-                          homeData.map((person, personIdx) => (
-                            <ContactFormData
-                              person={person}
-                              personIdx={personIdx}
-                            />
-                          ))}
-                      </>)}
-                        
+                        {loader ? (<PELoader />) : (<>
+                          {homeData &&
+                            homeData.map((person, personIdx) => (
+                              <ContactFormData
+                                person={person}
+                                personIdx={personIdx}
+                              />
+                            ))}
+                        </>)}
+
                       </tbody>
                     </table>
                   </div>

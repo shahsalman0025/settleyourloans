@@ -5,41 +5,50 @@ import ViewModal from "./ViewModal";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 import { collection, deleteDoc, doc, getDocs } from "firebase/firestore";
 import { db } from "../../firebase";
+import PELoader from "../../Screens/Utils/PELoader";
+
 
 function HomeForm() {
   const [homeData, setHomeData] = useState([]);
   const [user, setUser] = useState(null);
+  const [loader, setLoader] = useState(true);
+
   const [viewModal, setViewModal] = useState(false);
   const [viewModalId, setViewModalId] = useState();
-  
+
   const auth = getAuth();
   useEffect(() => {
-      getUserAuth();
-      FetchHomeFormData();
-    }, []);
-  const getUserAuth = async() => {
+    getUserAuth();
+    FetchHomeFormData();
+  }, []);
+  const getUserAuth = async () => {
     onAuthStateChanged(auth, (user) => {
       if (user === null) {
         setUser(false)
       }
-      else{
+      else {
         setUser(true)
       }
     });
   }
   const FetchHomeFormData = async () => {
+    setLoader(true)
+
     await getDocs(collection(db, "homefromrecord"))
-        .then((querySnapshot)=>{               
-            const newData = querySnapshot.docs
-                .map((doc) => ({...doc.data(), id:doc.id }));
-            setHomeData(newData);                
-        })}
+      .then((querySnapshot) => {
+        const newData = querySnapshot.docs
+          .map((doc) => ({ ...doc.data(), id: doc.id }));
+        newData.sort((a, b) => new Date(b.date) - new Date(a.date));
+        setHomeData(newData)
+        setLoader(false)
+      })
+  }
   const deleteBtnClick = async (e) => {
     e.preventDefault();
     const docRef = doc(db, "homefromrecord", e.target.id);
     await deleteDoc(docRef).then(() => {
       alert("Deleted Sucessfully");
-    FetchHomeFormData();
+      FetchHomeFormData();
     });
   };
   // const viewBtnClick = async (e) => {
@@ -96,8 +105,8 @@ function HomeForm() {
                           >
                             Total Debt Amount
                           </th>
-                          
-                            <th
+
+                          <th
                             scope="col"
                             className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
                           >
@@ -130,15 +139,17 @@ function HomeForm() {
                         </tr>
                       </thead>
                       <tbody>
-                        {homeData &&
-                          homeData.map((person, personIdx) => (
-                            <HomeFormData
-                              person={person}
-                              personIdx={personIdx}
-                              deleteBtnClick={deleteBtnClick}
+                        {loader ? (<PELoader />) : (<>
+                          {homeData &&
+                            homeData.map((person, personIdx) => (
+                              <HomeFormData
+                                person={person}
+                                personIdx={personIdx}
+                                deleteBtnClick={deleteBtnClick}
                               // viewBtnClick={viewBtnClick}
-                            />
-                          ))}
+                              />
+                            ))}
+                        </>)}
                       </tbody>
                     </table>
                   </div>
