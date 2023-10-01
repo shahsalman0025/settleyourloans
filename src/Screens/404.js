@@ -5,6 +5,9 @@ import Header from "../components/Header";
 function NotFound() {
   return (
     <>
+      <a href="https://api.whatsapp.com/send/?phone=919821219819&text&type=phone_number&app_absent=0" class="float" target="_blank">
+        <i class="fab fa-whatsapp xl"></i>
+      </a>
       <Header />
       <div className="error__area pt-200 pb-100">
         <div className="container">

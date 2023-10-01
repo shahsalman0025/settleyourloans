@@ -10,6 +10,9 @@ function About() {
   // }
   return (
     <>
+      <a href="https://api.whatsapp.com/send/?phone=919821219819&text&type=phone_number&app_absent=0" class="float" target="_blank">
+        <i class="fab fa-whatsapp xl"></i>
+      </a>
       <SocialHeader />
       <Header />
       <div className="about-5__area about-5__plr ">

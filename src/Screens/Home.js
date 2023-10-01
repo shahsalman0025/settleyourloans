@@ -17,6 +17,9 @@ import SocialHeader from "../components/socialheader";
 function Home() {
   return (
     <>
+      <a href="https://api.whatsapp.com/send/?phone=919821219819&text&type=phone_number&app_absent=0" class="float" target="_blank">
+        <i class="fab fa-whatsapp xl"></i>
+      </a>
       <SocialHeader />
       <Header />
 
@@ -27,11 +30,12 @@ function Home() {
             <Stats />
 
             <Manager />
-            <SCFeed />
 
             <ServicesGraph />
             <NewT />
-            <Contact />
+            <SCFeed />
+
+            {/* <Contact /> */}
           </main>
         </div>
       </div>
