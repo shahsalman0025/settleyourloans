@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { Link, Navigate } from "react-router-dom";
 import Header from "../components/Header";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
-
+import SocialHeader from "../components/socialheader";
 function About() {
   // if(true){
   // return <Navigate to="/"  />;
@@ -10,6 +10,7 @@ function About() {
   // }
   return (
     <>
+      <SocialHeader />
       <Header />
       <div className="about-5__area about-5__plr ">
         <div className="container-fluid pt-24">

@@ -12,18 +12,23 @@ import SocialFeed from "../components/SocialFeed";
 import Stats from "../components/Stats";
 import Testimonials from "../components/Testimonials";
 import Modal from "../components/Modal";
+import SocialHeader from "../components/socialheader";
 
 function Home() {
   return (
     <>
+      <SocialHeader />
       <Header />
+
       <div id="smooth-wrapper">
         <div id="smooth-content">
           <main>
             <Hero />
-            <SCFeed />
-            <Manager />
             <Stats />
+
+            <Manager />
+            <SCFeed />
+
             <ServicesGraph />
             <NewT />
             <Contact />

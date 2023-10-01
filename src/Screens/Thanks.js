@@ -1,17 +1,19 @@
 import React, { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import Header from "../components/Header";
+import SocialHeader from "../components/socialheader";
 
 function Thanks() {
   const { formId } = useParams();
   const [name, setName] = useState();
   useEffect(() => {
     setName(
-    localStorage.getItem("formName"));
+      localStorage.getItem("formName"));
     window.scrollTo(0, 0);
   }, []);
   return (
     <>
+      <SocialHeader />
       <Header />{" "}
       <div className="slider-2__area grey-bg slider-2__space slider-2__plr p-relative z-index fix">
         <div className="container">

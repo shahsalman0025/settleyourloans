@@ -4,22 +4,19 @@ import { Link } from "react-router-dom";
 import Pdf_one from "../documents/FAQ.pdf";
 import Pdf_two from "../documents/Privacy_Policy.pdf";
 import Pdf_three from "../documents/Terms_and_Conditions.pdf";
-const graphcms = new GraphQLClient(
-  "https://api-ap-south-1.hygraph.com/v2/clf3jxqh547va01t7126u21j0/master"
-);
+
+
+const graphcms = new GraphQLClient(`${process.env.REACT_APP_GRAPH_API_KEY}`);
 
 const QUERY = gql`
   {
     services {
       title
-      icon
+    
       slug
       des
       coverPhoto {
         url
-      }
-      content {
-        html
       }
     }
   }

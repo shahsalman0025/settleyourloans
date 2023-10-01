@@ -2,6 +2,7 @@ import React from "react";
 import Header from "../components/Header";
 import { Disclosure } from "@headlessui/react";
 import { ChevronDownIcon } from "@heroicons/react/outline";
+import SocialHeader from "../components/socialheader";
 
 const faqs = [
   {
@@ -47,6 +48,7 @@ function classNames(...classes) {
 function FAQ() {
   return (
     <>
+      <SocialHeader />
       <Header />
       <div className="bg-gray-50 pt-56">
         <div className="max-w-7xl mx-auto py-12 px-4 sm:py-16 sm:px-6 lg:px-8">

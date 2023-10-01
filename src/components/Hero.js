@@ -39,12 +39,12 @@ function Hero() {
         settlementProcess: settlementProcess,
         monthlyIncome: monthlyIncome,
         date: Date.now()
-      }).then((val)=>{
-        navigate('/thanks/'+val.id);
+      }).then((val) => {
+        navigate('/thanks/' + val.id);
         setLoader(true);
         console.log(val.id)
       })
-      
+
     } catch (error) {
       alert(error)
     }
@@ -137,7 +137,7 @@ function Hero() {
         />
       </div> */}
       <div className="container-fluid">
-        <div className="row align-items-center justify-content-between">
+        <div className="row .align-items-start justify-content-between">
           <div className="col-xl-6 col-lg-6">
             <div className="slider__section-box">
               <h4 className="section-subtitle char-anim">
