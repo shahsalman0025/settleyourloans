@@ -18,14 +18,14 @@ function About() {
       <div className="about-5__area about-5__plr ">
         <div className="container-fluid pt-24">
           <div className="about-5__border">
-            <div className="row align-items-center">
+            <div className="row ">
               <div
                 className="col-xl-5 col-lg-5 wow tpfadeUp"
                 data-wow-duration=".9s"
                 data-wow-delay=".3s"
               >
                 <div className="about-5__main-img text-center text-lg-start">
-                  <a href="about-us.html">
+                  <a href="#">
                     <img src="./assets/aboutImage.png" alt="" />
                   </a>
                 </div>
