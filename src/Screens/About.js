@@ -18,7 +18,7 @@ function About() {
       <div className="about-5__area about-5__plr ">
         <div className="container-fluid pt-24">
           <div className="about-5__border">
-            <div className="row ">
+            <div className="row">
               <div
                 className="col-xl-5 col-lg-5 wow tpfadeUp"
                 data-wow-duration=".9s"
