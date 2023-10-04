@@ -8,7 +8,8 @@ import PELoader from "../Screens/Utils/PELoader";
 import validator from "validator";
 import Modal from "./Modal";
 import { db } from "../firebase";
-import { addDoc, collection, Timestamp } from "firebase/firestore";
+import { addDoc, collection, getDocs, Timestamp, where, query } from "firebase/firestore";
+import { upload } from "@testing-library/user-event/dist/upload";
 
 function Hero() {
   const navigate = useNavigate();
@@ -29,6 +30,29 @@ function Hero() {
   };
   const formSubmitHandler = async (e) => {
     e.preventDefault();
+    console.log(email);
+    const q = query(collection(db, "homefromrecord"), where("email", "==", email));
+
+    const querySnapshot = await getDocs(q);
+    if (querySnapshot.empty) {
+      UploadData();
+    }
+    else {
+      alert('Already Uploaded');
+      window.setTimeout(() => {
+        setLoader(false);
+        localStorage.setItem("formName", name);
+      }, 3000);
+    }
+    // querySnapshot.forEach((doc) => {
+    //   // doc.data() is never undefined for query doc snapshots
+    //   console.log(doc.id, " => ", doc.data());
+
+    // });
+
+  };
+  async function UploadData() {
+
     try {
       await addDoc(collection(db, 'homefromrecord'), {
         name: name,
@@ -52,7 +76,7 @@ function Hero() {
       setLoader(false);
       localStorage.setItem("formName", name);
     }, 3000);
-  };
+  }
   return (
     <div className="slider__area grey-bg slider__space slider__plr p-relative z-index fix">
       {loader && <PELoader />}
