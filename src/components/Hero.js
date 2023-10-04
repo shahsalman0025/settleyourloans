@@ -28,6 +28,11 @@ function Hero() {
     const isValidPhoneNumber = validator.isMobilePhone(number);
     return isValidPhoneNumber;
   };
+
+  const validateEmail = (number) => {
+    const isValidEmail = validator.isMobilePhone(number);
+    return isValidEmail;
+  };
   const formSubmitHandler = async (e) => {
     e.preventDefault();
     console.log(email);
@@ -35,7 +40,10 @@ function Hero() {
 
     const querySnapshot = await getDocs(q);
     if (querySnapshot.empty) {
-      UploadData();
+      if (validatePhoneNumber && validateEmail) {
+        UploadData();
+
+      }
     }
     else {
       alert('Already Uploaded');

@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import PELoader from "../Screens/Utils/PELoader";
 import app from "../firebase";
 import { db } from "../firebase";
-import { addDoc, collection,getDocs, Timestamp } from "firebase/firestore";
+import { addDoc, collection, getDocs, Timestamp } from "firebase/firestore";
 function Contact() {
   const navigate = useNavigate();
   const [name, setName] = useState();
@@ -24,11 +24,11 @@ function Contact() {
         number: number,
         message: message,
         created: Date.now()
-      }).then((val)=>{
+      }).then((val) => {
         setLoader(true);
-        navigate('/thanks/'+val.id);
+        navigate('/thanks/' + val.id);
       })
-      
+
     } catch (error) {
       setLoader(false);
       alert(error)
@@ -58,8 +58,8 @@ function Contact() {
       <div className="contact__border">
         <div className="container">
           <div className="row align-items-center">
-            <div className="col-xl-8 col-lg-7">
-              <div className="contact__section-title pb-10">
+            <div className="col-xl-8 col-lg-7 ">
+              {/* <div className="contact__section-title pb-10">
                 <h4
                   className="section-subtitle char-anim wow tpfadeUp"
                   data-wow-duration=".9s"
@@ -155,7 +155,7 @@ function Contact() {
                     </button>
                   </div>
                 </form>
-              </div>
+              </div> */}
             </div>
             <div className="col-xl-4 col-lg-5">
               <div className="contact__left-side">
