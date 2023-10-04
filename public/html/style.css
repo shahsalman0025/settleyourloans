@@ -1,0 +1,15 @@
+body{
+    padding: 0px 10vw;
+}
+h1{
+    text-align: center;
+    font-size: 2.5rem;
+
+}
+p{
+    text-align: justify;
+    font-size: 2rem;
+}
+strong{
+    font-size: 2.2rem;
+}

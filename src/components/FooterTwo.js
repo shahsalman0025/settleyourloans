@@ -91,7 +91,7 @@ export const FooterTwo = () => {
               <ul className="mt-2 space-y-2">
                 <li>
                   <a
-                    href={Pdf_three}
+                    href='/html/terms-and-conditions.html'
                     target="_blank"
                     className="transition-colors duration-300 text-gray-300 hover:text-teal-accent-400"
                   >
@@ -100,7 +100,8 @@ export const FooterTwo = () => {
                 </li>
                 <li>
                   <a
-                    href={Pdf_two}
+                    href='/html/privacy-policy.html'
+
                     target="_blank"
                     className="transition-colors duration-300 text-gray-300 hover:text-teal-accent-400"
                   >
