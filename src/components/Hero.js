@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import shape1 from "./../assets/img/slider/m1.png";
 import shape2 from "./../assets/img/slider/m2.png";
 import shape3 from "./../assets/img/slider/m3.png";
@@ -22,6 +22,14 @@ function Hero() {
   const [monthlyIncome, setMonthlyIncome] = useState();
   const [loader, setLoader] = useState(false);
   const [modal, setModal] = useState(true);
+  const [ipAddress, setIPAddress] = useState('')
+
+  useEffect(() => {
+    fetch('https://api.ipify.org?format=json')
+      .then(response => response.json())
+      .then(data => setIPAddress(data.ip))
+      .catch(error => console.log(error))
+  }, []);
 
 
   const validatePhoneNumber = (number) => {
@@ -36,7 +44,7 @@ function Hero() {
   const formSubmitHandler = async (e) => {
     e.preventDefault();
     console.log(email);
-    const q = query(collection(db, "homefromrecord"), where("email", "==", email));
+    const q = query(collection(db, "homefromrecord"), where("ip", "==", ipAddress));
 
     const querySnapshot = await getDocs(q);
     if (querySnapshot.empty) {
@@ -70,7 +78,8 @@ function Hero() {
         areYouFacing: areYouFacing,
         settlementProcess: settlementProcess,
         monthlyIncome: monthlyIncome,
-        date: Date.now()
+        date: Date.now(),
+        ip: ipAddress
       }).then((val) => {
         navigate('/thanks/' + val.id);
         setLoader(true);
