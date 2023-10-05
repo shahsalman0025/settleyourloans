@@ -23,6 +23,7 @@ function Hero() {
   const [loader, setLoader] = useState(false);
   const [modal, setModal] = useState(true);
   const [ipAddress, setIPAddress] = useState('')
+  const [disableButton, setDisableButton] = useState(false)
 
   useEffect(() => {
     fetch('https://api.ipify.org?format=json')
@@ -42,15 +43,33 @@ function Hero() {
     return isValidEmail;
   };
   const formSubmitHandler = async (e) => {
+    setDisableButton(true)
     e.preventDefault();
     console.log(email);
     const q = query(collection(db, "homefromrecord"), where("ip", "==", ipAddress));
 
     const querySnapshot = await getDocs(q);
     if (querySnapshot.empty) {
-      if (validatePhoneNumber && validateEmail) {
-        UploadData();
+      if (validatePhoneNumber) {
+        if (validateEmail) {
+          if (monthlyIncome == 'Choose a option') {
+            alert('InValid Monthly Income');
+          }
+          else if (settlementProcess == 'Choose a option') {
+            alert('Form Not filled Properly');
 
+          } else {
+            UploadData();
+
+          }
+
+        } else {
+          alert('InValid Email');
+        }
+
+      }
+      else {
+        alert('InValid Phone number');
       }
     }
     else {
@@ -65,7 +84,7 @@ function Hero() {
     //   console.log(doc.id, " => ", doc.data());
 
     // });
-
+    setDisableButton(false)
   };
   async function UploadData() {
 
@@ -512,6 +531,7 @@ function Hero() {
                       data-wow-delay="1.1s"
                     >
                       <button
+                        style={disableButton ? { display: 'none' } : {}}
                         type="submit"
                         className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
                       >
