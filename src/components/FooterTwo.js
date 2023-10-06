@@ -108,15 +108,7 @@ export const FooterTwo = () => {
                     Privacy Policy
                   </a>
                 </li>
-                <li>
-                  <a
-                    href={Pdf_one}
-                    target="_blank"
-                    className="transition-colors duration-300 text-gray-300 hover:text-teal-accent-400"
-                  >
-                    FAQ
-                  </a>
-                </li>
+
               </ul>
             </div>
             <div>

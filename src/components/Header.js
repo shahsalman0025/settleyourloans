@@ -147,6 +147,29 @@ function Header() {
           </div>
           <div className="mobile-menu mean-container" />
           <div className="itoffcanvas__info">
+            <div className="it-info-wrapper mb-20 d-flex align-items-center mobile-nav">
+
+
+              <ul>
+                <li>
+                  <Link to="/">Home</Link>
+                </li>
+                <li>
+                  <Link to="/about">About</Link>
+                </li>
+
+                <li>
+                  <Link to="/blogs">Blogs</Link>
+                </li>
+                <li>
+                  <Link to="/faq">FAQs</Link>
+                </li>
+                <li>
+                  <Link to="/contact">Contact</Link>
+                </li>
+              </ul>
+
+            </div>
             <h3 className="offcanva-title">Get In Touch</h3>
             <div className="it-info-wrapper mb-20 d-flex align-items-center">
               <div className="itoffcanvas__info-icon">

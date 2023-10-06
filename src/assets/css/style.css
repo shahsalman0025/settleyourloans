@@ -22868,3 +22868,45 @@ only screen and (min-width: 768px) and (max-width: 991px) {
     padding: 0 70px;
   }
 }
+
+.mobile-nav ul li a {
+  display: block;
+  font-size: 22px;
+  color: white;
+  /* text-decoration: underline; */
+  /* height: 40px; */
+  margin: 10px 0px;
+  border-bottom: 1px solid white;
+  padding: 0px 0px 5px 0px;
+
+
+}
+
+.media_main {
+  padding: 20px;
+  background: #232323;
+  margin: 40px 0px;
+}
+
+.media_main h3 {
+  color: white;
+}
+
+.media_main h4 {
+  color: white;
+  background-color: rgba(255, 220, 96, 1);
+}
+
+.media {
+  height: 60px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+}
+
+.media img {
+  height: 40px;
+  margin: 0px 20px;
+}

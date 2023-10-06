@@ -13,6 +13,7 @@ import Stats from "../components/Stats";
 import Testimonials from "../components/Testimonials";
 import Modal from "../components/Modal";
 import SocialHeader from "../components/socialheader";
+import Media from "../components/media";
 
 function Home() {
   return (
@@ -27,6 +28,7 @@ function Home() {
         <div id="smooth-content">
           <main>
             <Hero />
+            <Media />
             <Stats />
 
             <Manager />
