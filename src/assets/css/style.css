@@ -22883,9 +22883,10 @@ only screen and (min-width: 768px) and (max-width: 991px) {
 }
 
 .media_main {
-  padding: 20px;
-  background: #232323;
+  padding: 50px;
+  background: rgba(255, 220, 96, 0.1);
   margin: 40px 0px;
+
 }
 
 .media_main h3 {
@@ -22899,7 +22900,7 @@ only screen and (min-width: 768px) and (max-width: 991px) {
 
 .media {
   height: 60px;
-
+  margin-bottom: 60px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -22907,6 +22908,10 @@ only screen and (min-width: 768px) and (max-width: 991px) {
 }
 
 .media img {
-  height: 40px;
-  margin: 0px 20px;
+  background-color: #fff;
+  height: 80px;
+  width: 150px;
+  margin: 20px;
+  padding: 20px;
+  border-radius: 5px;
 }
