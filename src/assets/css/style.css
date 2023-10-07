@@ -8934,6 +8934,7 @@ only screen and (min-width: 768px) and (max-width: 991px) {
   transition: 0.3s;
   border-top-right-radius: 20%;
   padding: 70px 55px;
+  height: 100%;
 }
 
 @media only screen and (min-width: 1200px) and (max-width: 1399px) {
@@ -22890,7 +22891,7 @@ only screen and (min-width: 768px) and (max-width: 991px) {
 }
 
 .media_main h3 {
-  color: white;
+  color: #000;
 }
 
 .media_main h4 {
@@ -22908,7 +22909,7 @@ only screen and (min-width: 768px) and (max-width: 991px) {
 }
 
 .media img {
-  background-color: #fff;
+  /* background-color: #fff; */
   height: 80px;
   width: 150px;
   margin: 20px;

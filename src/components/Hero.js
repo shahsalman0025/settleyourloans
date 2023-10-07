@@ -24,6 +24,8 @@ function Hero() {
   const [modal, setModal] = useState(true);
   const [ipAddress, setIPAddress] = useState('')
   const [disableButton, setDisableButton] = useState(false)
+  const [emailError, setEmailError] = useState("");
+  const [numberError, setNumberError] = useState("");
 
   useEffect(() => {
     fetch('https://api.ipify.org?format=json')
@@ -33,25 +35,54 @@ function Hero() {
   }, []);
 
 
-  const validatePhoneNumber = (number) => {
-    const isValidPhoneNumber = validator.isMobilePhone(number);
-    return isValidPhoneNumber;
-  };
+  // const validatePhoneNumber = (number) => {
+  //   const isValidPhoneNumber = validator.isMobilePhone(number);
+  //   return isValidPhoneNumber;
+  // };
 
-  const validateEmail = (number) => {
-    const isValidEmail = validator.isMobilePhone(number);
-    return isValidEmail;
-  };
+  // const validateEmail = (number) => {
+  //   const isValidEmail = validator.isMobilePhone(number);
+  //   return isValidEmail;
+  // };
   const formSubmitHandler = async (e) => {
     setDisableButton(true)
     e.preventDefault();
+    setEmailError("");
+    setNumberError("");
+  
+    let isValid = true;
+  
+    // Validate email
+    if (!validator.isEmail(email)) {
+      setEmailError('Invalid email address');
+      isValid = false;
+    }
+  
+    // Validate number (assuming you want a numeric validation)
+    if (!validator.isNumeric(number)) {
+      setNumberError('Invalid phone number');
+      isValid = false;
+    }
+  
+    // Rest of your form submission logic
+    // ...
+  
+    if (isValid) {
+      // Submit the form or perform other actions
+      // ...
+    }
     console.log(email);
     const q = query(collection(db, "homefromrecord"), where("ip", "==", ipAddress));
 
     const querySnapshot = await getDocs(q);
     if (querySnapshot.empty) {
-      if (validatePhoneNumber) {
-        if (validateEmail) {
+      
+       if (!validator.isNumeric(number)) {
+        setNumberError('Invalid phone number');
+        isValid = false;
+        if (!validator.isEmail(email)) {
+          setEmailError('Invalid email address');
+          isValid = false;
           if (monthlyIncome == 'Choose a option') {
             alert('InValid Monthly Income');
           }
@@ -70,6 +101,10 @@ function Hero() {
       }
       else {
         alert('InValid Phone number');
+      }
+      if (isValid) {
+        // Submit the form or perform other actions
+        // ...
       }
     }
     else {
@@ -282,6 +317,7 @@ function Hero() {
                             setNumber(e.target.value);
                           }}
                         />
+                        {numberError && <p className="text-red-500">{numberError}</p>}
                       </div>
                     </div>
                     <div className="mb-6">
@@ -301,6 +337,7 @@ function Hero() {
                           setEmail(e.target.value);
                         }}
                       />
+                      {emailError && <p className="text-red-500">{emailError}</p>}
                     </div>
                     <div className="mb-6">
                       <label
