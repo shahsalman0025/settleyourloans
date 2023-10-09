@@ -135,7 +135,7 @@ function Header() {
             </button>
           </div>
           <div className="itoffcanvas__logo">
-            <a href="index.html">
+            <a href="/">
               <img src="https://i.ibb.co/p2pWRRM/logo.png" alt="" />
             </a>
           </div>
@@ -157,7 +157,19 @@ function Header() {
                 <li>
                   <Link to="/about">About</Link>
                 </li>
-
+                  <li className="has-dropdown">
+                    <Link to="/">Services</Link>
+                    <ul className="submenu">
+                         {/* <a>
+                         {posts &&
+                            posts.map((s) => (
+                              <li>
+                                <Link to={`/service/${s.slug}`}>{s.title}</Link>
+                              </li>
+                            ))}
+                         </a> */}
+                    </ul>
+                  </li>
                 <li>
                   <Link to="/blogs">Blogs</Link>
                 </li>
@@ -183,6 +195,7 @@ function Header() {
                   <span
                     className="__cf_email__"
                     data-cfemail="a9c1ccc5c5c6e9d0c6dcdbc4c8c0c587cac6c4"
+                    href="mail.com/info@settleloans,"
                   >
                     info@settleloans.in
                   </span>
