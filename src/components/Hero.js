@@ -24,8 +24,8 @@ function Hero() {
   const [modal, setModal] = useState(true);
   const [ipAddress, setIPAddress] = useState('')
   const [disableButton, setDisableButton] = useState(false)
-  const [emailError, setEmailError] = useState("");
-  const [numberError, setNumberError] = useState("");
+  const [emailError, setEmailError] = useState(false);
+  const [numberError, setNumberError] = useState(false);
 
   useEffect(() => {
     fetch('https://api.ipify.org?format=json')
@@ -47,8 +47,8 @@ function Hero() {
   const formSubmitHandler = async (e) => {
     setDisableButton(true)
     e.preventDefault();
-    setEmailError("");
-    setNumberError("");
+    setEmailError(true);
+    setNumberError(true);
   
     let isValid = true;
   
@@ -68,10 +68,9 @@ function Hero() {
     // ...
   
     if (isValid) {
-      // Submit the form or perform other actions
-      // ...
+      alert("Form Submitted successfully")
     }
-    console.log(email);
+    console.log(isValid);
     const q = query(collection(db, "homefromrecord"), where("ip", "==", ipAddress));
 
     const querySnapshot = await getDocs(q);
@@ -89,7 +88,8 @@ function Hero() {
           else if (settlementProcess == 'Choose a option') {
             alert('Form Not filled Properly');
 
-          } else {
+          }
+           else {
             UploadData();
 
           }
@@ -107,13 +107,25 @@ function Hero() {
         // ...
       }
     }
-    else {
-      alert('Already Uploaded');
-      window.setTimeout(() => {
-        setLoader(false);
-        localStorage.setItem("formName", name);
-      }, 3000);
+    if (isValid) {
+      isValid(true);
+      console.log("okey")
     }
+      // else {
+      //   alert('Already Uploaded');
+      //   window.setTimeout(() => {
+      //     setLoader(false);
+      //     localStorage.setItem("formName", name);
+      //   }, 3000);
+      // }
+    
+    // else {
+    //   alert('Already Uploaded');
+    //   window.setTimeout(() => {
+    //     setLoader(false);
+    //     localStorage.setItem("formName", name);
+    //   }, 3000);
+    // }
     // querySnapshot.forEach((doc) => {
     //   // doc.data() is never undefined for query doc snapshots
     //   console.log(doc.id, " => ", doc.data());
