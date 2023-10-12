@@ -22884,7 +22884,7 @@ only screen and (min-width: 768px) and (max-width: 991px) {
 
 .media_main {
   padding: 50px;
-  background: rgba(255, 220, 96, 0.1);
+  background: rgba(255, 220, 96, 1);
   margin: 40px 0px;
 
 }
