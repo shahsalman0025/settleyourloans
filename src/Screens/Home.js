@@ -28,11 +28,10 @@ function Home() {
         <div id="smooth-content">
           <main>
             <Hero />
-            <Media />
+          
             <Stats />
-
+      <Media />
             <Manager />
-
             <ServicesGraph />
             <NewT />
             <SCFeed />
