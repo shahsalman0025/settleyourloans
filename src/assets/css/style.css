@@ -22915,16 +22915,18 @@ only screen and (min-width: 768px) and (max-width: 991px) {
   padding: 10px;
   border-radius: 5px;
 }
-@media only screen and (min-width: 300px) and (max-width: 767px){
+
+@media only screen and (min-width: 300px) and (max-width: 767px) {
   .media {
-    height: 100% ;
+    height: 100%;
     margin-bottom: 60px;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: initial;
-  
+
   }
+
   .media img {
     background-color: #fff;
     height: 80px;
@@ -22934,4 +22936,22 @@ only screen and (min-width: 768px) and (max-width: 991px) {
     border-radius: 5px;
     border-bottom: 1px solid #6f6f7944;
   }
+}
+
+.comingsoon {
+  display: flex;
+  align-items: center;
+}
+
+.comingsoon p {
+  color: white;
+  padding: 0px;
+  margin: 0px;
+  font-weight: 700;
+}
+
+.comingsoon img {
+  height: 20px;
+
+
 }

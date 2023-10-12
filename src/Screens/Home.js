@@ -28,9 +28,9 @@ function Home() {
         <div id="smooth-content">
           <main>
             <Hero />
-          
+
             <Stats />
-      <Media />
+            <Media />
             <Manager />
             <ServicesGraph />
             <NewT />
