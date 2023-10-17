@@ -14,6 +14,7 @@ import Testimonials from "../components/Testimonials";
 import Modal from "../components/Modal";
 import SocialHeader from "../components/socialheader";
 import Media from "../components/media";
+import Banks from "../components/banks";
 
 function Home() {
   return (
@@ -30,6 +31,7 @@ function Home() {
             <Hero />
 
             <Stats />
+            <Banks/>
             <Media />
             <Manager />
             <ServicesGraph />

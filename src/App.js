@@ -33,12 +33,14 @@ import Error from "./Screens/Error";
 import Modal from "./components/Modal";
 import NewBlogs from "./Screens/Blogs/NewBlogs";
 import FAQ from "./Screens/FAQ";
+import Banks from "./components/banks";
 function App() {
   return (
     <div className="App">
       <Router>
         <Routes>
           <Route path="/" element={<Home />}></Route>
+          <Route path="banks" element={<Banks />}></Route>
           <Route path="/faq" element={<FAQ />}></Route>
           <Route path="/form" element={<Modal />}></Route>
           <Route path="/about" element={<About />}></Route>
