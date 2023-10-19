@@ -11,7 +11,7 @@ function Media() {
         <h3 className="section-title title-anim pt-20 pb-20">In Media</h3>
       </div>
       <div className="media">
-        <img src={media3} alt=""  style={{}}/>
+        <img src={media3} alt="" />
         <img src={media2} alt="" />
         <img src={media4} alt="" />
       </div>

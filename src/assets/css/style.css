@@ -22914,6 +22914,7 @@ only screen and (min-width: 768px) and (max-width: 991px) {
   margin: 20px;
   padding: 10px;
   border-radius: 5px;
+  box-shadow: 10px 13px 20px -6px rgba(0, 0, 0, 0.46);
 }
 
 @media only screen and (min-width: 300px) and (max-width: 767px) {
@@ -22931,11 +22932,16 @@ only screen and (min-width: 768px) and (max-width: 991px) {
     background-color: #fff;
     height: 80px;
     width: 150px;
-    margin: 0px;
+    margin: 10px;
     padding: 10px;
     border-radius: 5px;
     border-bottom: 1px solid #6f6f7944;
   }
+}
+
+.media img:hover {
+  cursor: pointer;
+  scale: 1.05;
 }
 
 .comingsoon {
@@ -22954,4 +22960,11 @@ only screen and (min-width: 768px) and (max-width: 991px) {
   height: 20px;
 
 
+}
+
+
+@media screen and (max-width:700px) {
+  .header-social-icons {
+    display: none;
+  }
 }
