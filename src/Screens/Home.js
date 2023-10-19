@@ -29,9 +29,9 @@ function Home() {
         <div id="smooth-content">
           <main>
             <Hero />
+            <Banks />
 
             <Stats />
-            <Banks/>
             <Media />
             <Manager />
             <ServicesGraph />
