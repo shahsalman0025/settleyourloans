@@ -57,8 +57,8 @@ const Banks = () => {
         autoplay: true,
         arrows: false,
         // speed: 1000,
-        autoplaySpeed: 1000,
-        cssEase: 'linear',
+        autoplaySpeed: 1500,
+        cssEase: 'ease-out',
     });
 
     return (
@@ -67,9 +67,7 @@ const Banks = () => {
         <div className="banks-bg">
             <div className="banks">
                 <div className="bank-span">
-                    <h3>We have effectively assested our <br />
-                        clients in achieving settlements <br />
-                        from</h3>
+                    <h3>We have effectively assisted our clients in achieving settlements from</h3>
                 </div>
             </div>
             <br />
