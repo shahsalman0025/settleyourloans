@@ -5,6 +5,7 @@ import media5 from '../assets/img/media/mint.jpg'
 import media3 from '../assets/img/media/media3.svg'
 import media2 from '../assets/img/media/media2.png'
 import media4 from '../assets/img/media/media4.svg'
+import { Link } from "react-router-dom";
 
 function Media() {
   return (
@@ -16,8 +17,21 @@ function Media() {
       </div> */}
 
       <div className="media">
-        <img src={media3} alt="" />
-        <img src={media2} alt="" />
+
+        <a href="https://www.entrepenuerstories.com/latest/settle-loans-settle-life/" target="_blank">
+
+
+          <img src={media3} alt="" />
+        </a>
+        <a href="https://www.thedailybeat.in/settle-loans-settle-life/ " target="_blank">
+
+          <img src={media2} alt="" />
+        </a>
+
+
+
+        {/* <img src={media3} alt="" /> */}
+
         <img src={media4} alt="" />
         <img src={media1} alt="" />
         <img src={media5} alt="" />
