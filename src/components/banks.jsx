@@ -57,7 +57,7 @@ const Banks = () => {
         autoplay: true,
         arrows: false,
         // speed: 1000,
-        // autoplaySpeed: 1000,
+        autoplaySpeed: 1000,
         cssEase: 'linear',
     });
 

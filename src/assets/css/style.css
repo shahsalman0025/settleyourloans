@@ -22909,8 +22909,8 @@ only screen and (min-width: 768px) and (max-width: 991px) {
 
 .media img {
   background-color: #fff;
-  height: 80px;
-  width: 150px;
+  height: 100px;
+  width: 180px;
   margin: 20px;
   padding: 10px;
   border-radius: 5px;
@@ -22967,4 +22967,10 @@ only screen and (min-width: 768px) and (max-width: 991px) {
   .header-social-icons {
     display: none;
   }
+}
+
+.slick-slide img {
+  width: 80% !important;
+  margin: 0px 10px;
+
 }
