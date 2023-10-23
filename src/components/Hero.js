@@ -49,24 +49,24 @@ function Hero() {
     e.preventDefault();
     setEmailError(true);
     setNumberError(true);
-  
+    UploadData();
     let isValid = true;
-  
+
     // Validate email
     if (!validator.isEmail(email)) {
       setEmailError('Invalid email address');
       isValid = false;
     }
-  
+
     // Validate number (assuming you want a numeric validation)
     if (!validator.isNumeric(number)) {
       setNumberError('Invalid phone number');
       isValid = false;
     }
-  
+
     // Rest of your form submission logic
     // ...
-  
+
     if (isValid) {
       alert("Form Submitted successfully")
     }
@@ -75,8 +75,8 @@ function Hero() {
 
     const querySnapshot = await getDocs(q);
     if (querySnapshot.empty) {
-      
-       if (!validator.isNumeric(number)) {
+
+      if (!validator.isNumeric(number)) {
         setNumberError('Invalid phone number');
         isValid = false;
         if (!validator.isEmail(email)) {
@@ -89,7 +89,7 @@ function Hero() {
             alert('Form Not filled Properly');
 
           }
-           else {
+          else {
             UploadData();
 
           }
@@ -111,14 +111,14 @@ function Hero() {
       isValid(true);
       console.log("okey")
     }
-      // else {
-      //   alert('Already Uploaded');
-      //   window.setTimeout(() => {
-      //     setLoader(false);
-      //     localStorage.setItem("formName", name);
-      //   }, 3000);
-      // }
-    
+    // else {
+    //   alert('Already Uploaded');
+    //   window.setTimeout(() => {
+    //     setLoader(false);
+    //     localStorage.setItem("formName", name);
+    //   }, 3000);
+    // }
+
     // else {
     //   alert('Already Uploaded');
     //   window.setTimeout(() => {
