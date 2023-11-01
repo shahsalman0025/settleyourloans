@@ -5,6 +5,7 @@ import PELoader from "../Screens/Utils/PELoader";
 import app from "../firebase";
 import { db } from "../firebase";
 import { addDoc, collection, getDocs, Timestamp } from "firebase/firestore";
+import SurveyComponent from "./forms/istform";
 function Contact() {
   const navigate = useNavigate();
   const [name, setName] = useState();
@@ -156,6 +157,7 @@ function Contact() {
                   </div>
                 </form>
               </div> */}
+              <SurveyComponent/>
             </div>
             <div className="col-xl-4 col-lg-5">
               <div className="contact__left-side">
