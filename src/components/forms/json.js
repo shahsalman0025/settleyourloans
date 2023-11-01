@@ -48,7 +48,7 @@ export const json = {
         "title": "City",
         "isRequired": true,
         "choices": [
-         "Dehli",
+         "Delhi",
          "Mumbai",
          "Pune",
          "Bangalore",
@@ -143,7 +143,7 @@ export const json = {
         "type": "dropdown",
         "name": "Past Settlement",
         "title": "In the past, have you done any settlement with any bank for credit card or personal loan?",
-        "description": "क्या आपने अतीत में क्रेडिट कार्ड या पर्सनल लोन के लिए किसी बैंक के साथ क",
+        "description": "क्या आपने अतीत में क्रेडिट कार्ड या पर्सनल लोन के लिए किसी बैंक के साथ कोई समझौता किया है?*",
         "isRequired": true,
         "choices": [
          "No",
@@ -155,7 +155,9 @@ export const json = {
        {
         "type": "dropdown",
         "name": "Payment to start settlement",
-        "title": "You can start settlement process with Rs.3,000 - Rs.5,000 and arrange additional funds towords first installment later. Is that manageable for you",
+        "title": "You can start settlement process with Rs.2,000 - Rs.5,000 and arrange additional funds towords first installment later. Is that manageable for you",
+        "description": "आप 2,000 रुपये से 5,000 रुपये के साथ निपटान प्रक्रिया शुरू कर सकते हैं और बाद में पहली किस्त के लिए अतिरिक्त धनराशि की व्यवस्था कर सकते हैं। क्या यह आपके लिए प्रबंधनीय है? *",
+        
         "isRequired": true,
         "choices": [
          "Yes I can arrange in next 1-2 days",
@@ -167,6 +169,7 @@ export const json = {
         "type": "dropdown",
         "name": "Language",
         "title": "Are you comfortable with English or would you prefer another language for phone call or WhatsApp messaging",
+        "description": "क्या आप अंग्रेजी में सहज हैं या फोन कॉल या व्हाट्सएप मैसेजिंग के लिए दूसरी भाषा पसंद करेंगे?*",
         "choices": [
          "Comfortable with English",
          "Hindi",
@@ -179,6 +182,8 @@ export const json = {
        },
        {
         "type": "comment",
+        "description": "आपके प्रश्न:",
+
         "name": "Queries",
         "title": "Your Queries"
        }
