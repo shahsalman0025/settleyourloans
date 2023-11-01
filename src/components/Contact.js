@@ -58,7 +58,7 @@ function Contact() {
       </div> */}
       <div className="contact__border">
         <div className="container">
-          <div className="row align-items-center">
+          <div className="row align-items-start">
             <div className="col-xl-8 col-lg-7 ">
               {/* <div className="contact__section-title pb-10">
                 <h4
@@ -159,7 +159,7 @@ function Contact() {
               </div> */}
               <SurveyComponent/>
             </div>
-            <div className="col-xl-4 col-lg-5">
+            <div className="col-xl-4 col-lg-5" style={{paddingTop:'48px'}}>
               <div className="contact__left-side">
                 <div
                   className="contact__item d-flex align-items-center wow tpfadeUp"
