@@ -6,15 +6,15 @@ export const json = {
       "elements": [
        {
         "type": "text",
-        "name": "question1",
+        "name": "Name",
         "title": "Name",
         "isRequired": true
        },
        {
         "type": "text",
-        "name": "question2",
-        "title": "Mobile",
-        "description": "Please share a number where we can reach you on call and whatsapp",
+        "name": "Mobile Number",
+        "title": "Mobile ",
+        "description": "Please share a number where we can reach you on call and WhatsApp",
         "isRequired": true,
         "requiredErrorText": "Invalid number",
         "validators": [
@@ -28,7 +28,7 @@ export const json = {
        },
        {
         "type": "text",
-        "name": "question6",
+        "name": "Email",
         "title": "Email",
         "isRequired": true,
         "requiredErrorText": "Invalid number",
@@ -43,7 +43,7 @@ export const json = {
        },
        {
         "type": "dropdown",
-        "name": "question3",
+        "name": "City",
         "title": "City",
         "isRequired": true,
         "choices": [
@@ -58,13 +58,13 @@ export const json = {
        },
        {
         "type": "boolean",
-        "name": "question4",
+        "name": "Married",
         "title": "Married ?",
         "isRequired": true
        },
        {
         "type": "dropdown",
-        "name": "question5",
+        "name": "Employment status",
         "title": "Employment status",
         "isRequired": true,
         "choices": [
@@ -76,16 +76,16 @@ export const json = {
        },
        {
         "type": "text",
-        "name": "question7",
+        "name": "Monthly income",
         "title": "Monthly income",
         "isRequired": true,
         "inputType": "number"
        },
        {
         "type": "dropdown",
-        "name": "question8",
+        "name": "Total credit card dues",
         "title": "Total credit card dues",
-        "description": "Provide total outstanding dues for all credit cards for which you want settlement",
+        "description": "कुल क्रेडिट कार्ड बकाया *",
         "isRequired": true,
         "choices": [
          "Rs. 5-6 lacs",
@@ -100,9 +100,9 @@ export const json = {
        },
        {
         "type": "dropdown",
-        "name": "question9",
+        "name": "Total personal loan amount",
         "title": "Total personal loan amount",
-        "description": "Provide total outstanding dues for all personal loans for which you want settlement",
+        "description": "कुल व्यक्तिगत ऋण राशि*",
         "isRequired": true,
         "choices": [
          "Rs. 5-6 lacs",
@@ -117,8 +117,9 @@ export const json = {
        },
        {
         "type": "dropdown",
-        "name": "question10",
+        "name": "Accomodation Status",
         "title": "Are you staying in rented accommodation or own house ?",
+        "description": "क्या आप किराये के मकान में रह रहे हैं या अपने घर में? *",
         "isRequired": true,
         "choices": [
          "Own house",
@@ -128,7 +129,8 @@ export const json = {
        {
         "type": "dropdown",
         "name": "question11",
-        "title": "Are you facing any harassment?",
+        "title": "harassment",
+        "description": "क्या आप किसी उत्पीड़न का सामना कर रहे हैं? *",
         "isRequired": true,
         "choices": [
          "Not facing any harassments",
@@ -138,8 +140,9 @@ export const json = {
        },
        {
         "type": "dropdown",
-        "name": "question12",
+        "name": "Past Settlement",
         "title": "In the past, have you done any settlement with any bank for credit card or personal loan?",
+        "description": "क्या आपने अतीत में क्रेडिट कार्ड या पर्सनल लोन के लिए किसी बैंक के साथ क",
         "isRequired": true,
         "choices": [
          "No",
@@ -150,7 +153,7 @@ export const json = {
        },
        {
         "type": "dropdown",
-        "name": "question13",
+        "name": "Payment to start settlement",
         "title": "You can start settlement process with Rs.3,000 - Rs.5,000 and arrange additional funds towords first installment later. Is that manageable for you",
         "isRequired": true,
         "choices": [
@@ -161,7 +164,7 @@ export const json = {
        },
        {
         "type": "dropdown",
-        "name": "question14",
+        "name": "Language",
         "title": "Are you comfortable with English or would you prefer another language for phone call or WhatsApp messaging",
         "choices": [
          "Comfortable with English",
@@ -175,7 +178,7 @@ export const json = {
        },
        {
         "type": "comment",
-        "name": "question15",
+        "name": "Queries",
         "title": "Your Queries"
        }
       ]
