@@ -18,16 +18,49 @@ function ContactFormData({ person, personIdx }) {
         {person.created ? d.toDateString() : "No Date"}
       </td>
       <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
-        {person.name}
+        {person['Name']}
       </td>
       <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-        {person.number}
+        {person['Mobile Number']}
       </td>
       <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-        {person.email}
+        {person.Email}
       </td>
       <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-        {person.message}
+        {person.Queries}
+      </td>
+      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+        {person.City}
+      </td>
+      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+        {person.Language}
+      </td>
+      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+        {person['Monthly income']}
+      </td>
+      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+        {person['Accomodation Status']}
+      </td>
+      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+        {person['Employment status']}
+      </td>
+      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+        {person['Past Settlement']}
+      </td>
+      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+        {person['Payment to start settlement']}
+      </td>
+      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+        {person.Married ? 'yes':'no'}
+      </td>
+      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+        {person['Total credit card dues']}
+      </td>
+      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+        {person['Total personal loan amount']}
+      </td>
+      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+        {person['question11']}
       </td>
     </tr>
     

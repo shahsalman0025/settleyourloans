@@ -1,5 +1,6 @@
 export const json = {
     "logoPosition": "right",
+    "completedHtml": "<h3>Thank you</h3>",
     "pages": [
      {
       "name": "page1",
