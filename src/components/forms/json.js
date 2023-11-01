@@ -17,15 +17,9 @@ export const json = {
         "title": "Mobile ",
         "description": "Please share a number where we can reach you on call and WhatsApp",
         "isRequired": true,
-        "requiredErrorText": "Invalid number",
-        "validators": [
-         {
-          "type": "regex",
-          "text": "Invalid number"
-         }
-        ],
-        "inputType": "tel",
-        "maxLength": ""
+     "requiredErrorText": "Invalid number",
+     "inputType": "tel",
+     "maxLength": 10
        },
        {
         "type": "text",
