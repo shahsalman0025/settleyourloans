@@ -66,13 +66,13 @@ function HeaderAdmin() {
                         <Link to="/blogs">Blog's</Link>
                       </li>
                       <li className="has-dropdown">
-                        <a href="service-details.html">Admins</a>
+                        <a href="/admin">Admins</a>
                         <ul className="submenu">
                           <li>
-                            <a href="service-1.html">Contact Form</a>
+                            <a href="/admin/contact">Contact Form</a>
                           </li>
                           <li>
-                            <a href="service-2.html">Home Form</a>
+                            <a href="/admin/home">Home Form</a>
                           </li>
                         </ul>
                       </li>
