@@ -9,7 +9,6 @@ const QUERY = gql`
   {
     services {
       title
-    
       slug
       des
       coverPhoto {
