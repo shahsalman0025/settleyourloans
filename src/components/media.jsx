@@ -28,7 +28,7 @@ function Media() {
           href="https://www.thedailybeat.in/settle-loans-settle-life/ "
           target="_blank"
         >
-          <img src={media2} alt="" />
+          <img src={media2} alt="" style={{width:"90"}}/>
         </a>
 
         {/* <img src={media3} alt="" /> */}
