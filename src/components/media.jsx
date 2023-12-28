@@ -37,7 +37,7 @@ function Media() {
         <img src={media1} alt="" />
         <img src={media5} alt="" />
         <a href="https://medium.com/@aashichadha07" target="_blank">
-          <img src={media6} alt="" style={{width:"90%"}}/>
+          <img src={media6} alt="" style={{width:"50%"}}/>
         </a>
       </div>
     </div>
