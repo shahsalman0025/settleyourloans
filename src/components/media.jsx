@@ -1,10 +1,11 @@
 import React from "react";
-import AliceCarousel from 'react-alice-carousel';
-import media1 from '../assets/img/media/midday.jpg'
-import media5 from '../assets/img/media/mint.jpg'
-import media3 from '../assets/img/media/media3.svg'
-import media2 from '../assets/img/media/media2.png'
-import media4 from '../assets/img/media/media4.svg'
+import AliceCarousel from "react-alice-carousel";
+import media1 from "../assets/img/media/midday.jpg";
+import media5 from "../assets/img/media/mint.jpg";
+import media3 from "../assets/img/media/media3.svg";
+import media2 from "../assets/img/media/media2.png";
+import media4 from "../assets/img/media/media4.svg";
+import media6 from "../assets/img/media/Medium.png";
 import { Link } from "react-router-dom";
 
 function Media() {
@@ -17,27 +18,30 @@ function Media() {
       </div> */}
 
       <div className="media">
-
-        <a href="https://www.entrepenuerstories.com/latest/settle-loans-settle-life/" target="_blank">
-
-
+        <a
+          href="https://www.entrepenuerstories.com/latest/settle-loans-settle-life/"
+          target="_blank"
+        >
           <img src={media3} alt="" />
         </a>
-        <a href="https://www.thedailybeat.in/settle-loans-settle-life/ " target="_blank">
-
+        <a
+          href="https://www.thedailybeat.in/settle-loans-settle-life/ "
+          target="_blank"
+        >
           <img src={media2} alt="" />
         </a>
-
-
 
         {/* <img src={media3} alt="" /> */}
 
         <img src={media4} alt="" />
         <img src={media1} alt="" />
         <img src={media5} alt="" />
+        <a href="https://medium.com/@aashichadha07" target="_blank">
+          <img src={media6} alt="" />
+        </a>
       </div>
     </div>
-  )
+  );
 }
 
-export default Media
+export default Media;
