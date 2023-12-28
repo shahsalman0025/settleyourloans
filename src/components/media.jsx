@@ -28,7 +28,7 @@ function Media() {
           href="https://www.thedailybeat.in/settle-loans-settle-life/ "
           target="_blank"
         >
-          <img src={media2} alt="" style={{width:"90px"}}/>
+          <img src={media2} alt="" />
         </a>
 
         {/* <img src={media3} alt="" /> */}
@@ -37,7 +37,7 @@ function Media() {
         <img src={media1} alt="" />
         <img src={media5} alt="" />
         <a href="https://medium.com/@aashichadha07" target="_blank">
-          <img src={media6} alt="" />
+          <img src={media6} alt="" style={{width:"90px"}}/>
         </a>
       </div>
     </div>
