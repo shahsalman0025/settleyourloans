@@ -22974,3 +22974,8 @@ only screen and (min-width: 768px) and (max-width: 991px) {
   margin: 0px 10px;
 
 }
+.medium{
+   width:180px;
+   height: 100px;
+   
+}
