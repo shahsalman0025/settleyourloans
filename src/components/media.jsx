@@ -36,7 +36,7 @@ function Media() {
         <img src={media4} alt="" />
         <img src={media1} alt="" />
         <img src={media5} alt="" />
-        <a href="https://medium.com/@aashichadha07" target="_blank">
+        <a href="https://medium.com/@settleloans" target="_blank">
           <img src={media6} alt="" />
         </a>
       </div>
