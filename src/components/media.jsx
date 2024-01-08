@@ -33,7 +33,11 @@ function Media() {
 
         {/* <img src={media3} alt="" /> */}
 
+        <a href="https://yourstory.com/companies/settleloans" target="_blank">
+        
         <img src={media4} alt="" />
+          </a>
+        
         <img src={media1} alt="" />
         <img src={media5} alt="" />
         <a href="https://medium.com/@settleloans" target="_blank">
