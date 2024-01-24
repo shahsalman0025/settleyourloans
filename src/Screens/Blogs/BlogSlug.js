@@ -13,11 +13,15 @@ const QUERY = gql`
       id
       title
       slug
+      titleTag
       coverPhoto {
         id
         url
       }
       content {
+        raw
+      }
+      metaDescription {
         raw
       }
     }
@@ -97,7 +101,7 @@ function BlogSlug() {
                             data-wow-duration=".9s"
                             data-wow-delay=".7s"
                           >
-                            <span className="text-center img-mr">
+                            {/* <span className="text-center img-mr">
                               <img
                                 src="assets/img/blog/blog-details-2.jpg"
                                 alt=""
@@ -108,7 +112,12 @@ function BlogSlug() {
                                 src="assets/img/blog/blog-details-3.jpg"
                                 alt=""
                               />
-                            </span>
+                            </span> */}
+                            <h1 className="text-stone-700">
+                              {postData.post.titleTag}
+                            </h1>
+
+                            {postData.post.metaDescription.raw}
                           </div>
                         </article>
                       </div>
