@@ -97,7 +97,7 @@ function BlogSlug() {
                             />
                           )}
                           <div
-                            className="postbox__details-img-box d-flex wow tpfadeUp"
+                            className="postbox__details-img-box  wow tpfadeUp"
                             data-wow-duration=".9s"
                             data-wow-delay=".7s"
                           >
@@ -116,8 +116,25 @@ function BlogSlug() {
                             <h1 className="text-stone-700">
                               {postData.post.titleTag}
                             </h1>
-
-                            {postData.post.metaDescription.raw}
+                            <br />
+                            {postData.post.metaDescription && (
+                              <RichText
+                                content={
+                                  postData.post.metaDescription[0].raw.children
+                                }
+                                renderers={{
+                                  h1: ({ children }) => (
+                                    <h1 className="text-stone-700">
+                                      {children}
+                                    </h1>
+                                  ),
+                                  bold: ({ children }) => (
+                                    <strong>{children}</strong>
+                                  ),
+                                }}
+                              />
+                            )}
+                            {/* {postData.post.metaDescription} */}
                           </div>
                         </article>
                       </div>
