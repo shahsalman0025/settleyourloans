@@ -15,7 +15,9 @@ import Modal from "../components/Modal";
 import SocialHeader from "../components/socialheader";
 import Media from "../components/media";
 import Banks from "../components/banks";
+
 import Reviews from "../components/Reviews";
+import GoogleReviews from "../components/googleReviews";
 
 function Home() {
   return (
@@ -35,14 +37,14 @@ function Home() {
           <main>
             <Hero />
             <Banks />
-
-            <Reviews />
+           <GoogleReviews/>
+            {/* <Reviews /> */}
 
             <Media />
             <Manager />
             <ServicesGraph />
             <Stats />
-
+            
             <SCFeed />
             {/* <Contact /> */}
           </main>
