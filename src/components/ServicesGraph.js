@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { GraphQLClient, gql } from "graphql-request";
-
+import "./all.css";
 const graphcms = new GraphQLClient(`${process.env.REACT_APP_GRAPH_API_KEY}`);
 
 const QUERY = gql`
   {
     services {
       title
-      
+
       slug
       des
       coverPhoto {
@@ -59,7 +59,6 @@ function ServicesGraph() {
         <div className="row">
           {posts &&
             posts.map((post) => (
-              
               <div
                 className="col-xl-4 col-lg-6 col-md-6 mb-30 wow tpfadeUp"
                 data-wow-duration=".9s"
@@ -79,14 +78,14 @@ function ServicesGraph() {
                         alt=""
                       />
                     </div>
-                    <div className="service__inner-icon">
+                    {/* <div className="service__inner-icon">
                       <span>
                         <a href="#">
-                          {/* <i className={`fal ${post.icon}`} /> */}
+                          <i className={`fal ${post.icon}`} />
                           <i className="fa-solid fa-user" />
                         </a>
                       </span>
-                    </div>
+                    </div> */}
                   </div>
                   <div className="service__content">
                     <h4 className="service__title title-color-1">

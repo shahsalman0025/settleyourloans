@@ -18,6 +18,7 @@ import Banks from "../components/banks";
 import {Helmet} from "react-helmet";
 import Reviews from "../components/Reviews";
 import GoogleReviews from "../components/googleReviews";
+import InstaStory from "../components/InstaStory";
 
 function Home() {
   return (
@@ -43,15 +44,16 @@ function Home() {
           <main>
             <Hero />
             <Banks />
-           <GoogleReviews/>
+            <GoogleReviews />
             {/* <Reviews /> */}
 
             <Media />
             <Manager />
             <ServicesGraph />
-            <Stats />
-            
-            <SCFeed />
+            <InstaStory />
+            {/* <Stats /> */}
+
+            {/* <SCFeed /> */}
             {/* <Contact /> */}
           </main>
         </div>
