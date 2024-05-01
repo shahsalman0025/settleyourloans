@@ -4,6 +4,7 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import Header from "../../components/Header";
 import PELoader from "../Utils/PELoader";
+import { Helmet } from "react-helmet";
 
 const graphcms = new GraphQLClient(`${process.env.REACT_APP_GRAPH_API_KEY}`);
 
@@ -13,6 +14,8 @@ const QUERY = gql`
       id
       title
       slug
+      metaTitle
+      metaDescription
       coverPhoto {
         id
         url
@@ -44,8 +47,17 @@ function ServiceSlug() {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
+  // console.log( );
   return (
     <>
+      {postData ? <Helmet>
+        <meta name="description" content="Helmet application" />
+        <meta charSet="utf-8" />
+        <title>{postData.service.metaTitle}</title>
+        <meta name="description" content={postData.service.metaDescription} />
+        <meta name="title" content={postData.service.metaTitle} />
+
+      </Helmet> : <></>}
       <Header />
       {postData ? (
         <div id="smooth-wrapper">

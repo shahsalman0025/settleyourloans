@@ -4,6 +4,7 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import Header from "../../components/Header";
 import PELoader from "../Utils/PELoader";
+import { Helmet } from "react-helmet";
 
 const graphcms = new GraphQLClient(`${process.env.REACT_APP_GRAPH_API_KEY}`);
 
@@ -13,7 +14,6 @@ const QUERY = gql`
       id
       title
       slug
-      titleTag
       coverPhoto {
         id
         url
@@ -21,9 +21,7 @@ const QUERY = gql`
       content {
         raw
       }
-      metaDescription {
-        raw
-      }
+     
     }
   }
 `;
@@ -35,12 +33,12 @@ function BlogSlug() {
     slug: slug,
   };
   useEffect(() => {
-    const getService = async () => {
+    const getpost = async () => {
       const data = await graphcms.request(QUERY, variables);
       setPostData(data);
       console.log(data);
     };
-    getService();
+    getpost();
   }, [slug]);
 
   useEffect(() => {
@@ -49,8 +47,10 @@ function BlogSlug() {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
+ 
   return (
     <>
+    
       <Header />
       {postData ? (
         <div id="smooth-wrapper">

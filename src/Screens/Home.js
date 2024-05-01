@@ -15,13 +15,19 @@ import Modal from "../components/Modal";
 import SocialHeader from "../components/socialheader";
 import Media from "../components/media";
 import Banks from "../components/banks";
-
+import {Helmet} from "react-helmet";
 import Reviews from "../components/Reviews";
 import GoogleReviews from "../components/googleReviews";
 
 function Home() {
   return (
     <>
+    <Helmet>
+      <meta name="description" content="Helmet application" />
+                <meta charSet="utf-8" />
+                <title>Settle Loans Settle Life</title>
+  
+      </Helmet>
       <a
         href="https://api.whatsapp.com/send/?phone=919821219819&text&type=phone_number&app_absent=0"
         class="float"
