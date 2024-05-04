@@ -7,7 +7,7 @@ const graphcms = new GraphQLClient(`${process.env.REACT_APP_GRAPH_API_KEY}`);
 
 const QUERY = gql`
   {
-    posts {
+    posts(first: 100) {
       title
       slug
       date
@@ -24,13 +24,18 @@ function Blogs() {
   const [posts, setPosts] = useState();
   const getPosts = async () => {
     const { posts } = await graphcms.request(QUERY);
+    console.log( "Raw Posts",posts.length);
+   
     posts.sort((a, b) => -a.date.localeCompare(b.date));
     setPosts(posts);
+    console.log( "Posts",posts);
   };
   useEffect(() => {
     if (!posts) {
       getPosts();
     }
+    console.log( "Posts",posts);
+
   }, [posts]);
   return (
     <>

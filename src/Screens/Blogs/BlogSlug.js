@@ -14,6 +14,8 @@ const QUERY = gql`
       id
       title
       slug
+      metaTitle
+      metaDescription
       coverPhoto {
         id
         url
@@ -36,13 +38,12 @@ function BlogSlug() {
     const getpost = async () => {
       const data = await graphcms.request(QUERY, variables);
       setPostData(data);
-      console.log(data);
+      console.log("Data",data);
     };
     getpost();
   }, [slug]);
 
   useEffect(() => {
-    console.log(postData);
   }, [postData, slug]);
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -50,7 +51,14 @@ function BlogSlug() {
  
   return (
     <>
-    
+      {postData ? <Helmet>
+        <meta name="description" content="Helmet application" />
+        <meta charSet="utf-8" />
+        <title>{postData.post.metaTitle}</title>
+        <meta name="description" content={postData.post.metaDescription} />
+        <meta name="title" content={postData.post.metaTitle} />
+
+      </Helmet> : <></>}
       <Header />
       {postData ? (
         <div id="smooth-wrapper">
@@ -67,6 +75,7 @@ function BlogSlug() {
                             data-wow-duration=".9s"
                             data-wow-delay=".3s"
                           >
+
                             <a href="blog-details.html">
                               <img
                                 src={
@@ -96,6 +105,8 @@ function BlogSlug() {
                               }}
                             />
                           )}
+           
+
                           <div
                             className="postbox__details-img-box  wow tpfadeUp"
                             data-wow-duration=".9s"
@@ -113,11 +124,11 @@ function BlogSlug() {
                                 alt=""
                               />
                             </span> */}
-                            <h1 className="text-stone-700">
+                            {/* <h1 className="text-stone-700">
                               {postData.post.titleTag}
                             </h1>
-                            <br />
-                            {postData.post.metaDescription && (
+                            <br /> */}
+                            {/* {postData.post.metaDescription && (
                               <RichText
                                 content={
                                   postData.post.metaDescription[0].raw.children
@@ -133,8 +144,8 @@ function BlogSlug() {
                                   ),
                                 }}
                               />
-                            )}
-                            {/* {postData.post.metaDescription} */}
+                            )} */}
+                          
                           </div>
                         </article>
                       </div>
