@@ -16,10 +16,6 @@ const QUERY = gql`
       slug
       metaTitle
       metaDescription
-      coverPhoto {
-        id
-        url
-      }
       content {
         raw
       }
@@ -76,7 +72,7 @@ function ServiceSlug() {
                       <div className="col-xxl-6 col-xl-6 col-lg-6">
                         <div className="breadcrumb__content z-index">
                           <h3
-                            className="breadcrumb__title char-anim wow tpfadeUp"
+                            className="breadcrumb__title char-anim wow tpfadeUp row align-items-center"
                             data-wow-duration=".9s"
                             data-wow-delay=".3s"
                           >
@@ -84,12 +80,12 @@ function ServiceSlug() {
                           </h3>
                         </div>
                       </div>
-                      <div
+                      {/* <div
                         className="col-xxl-6 col-xl-6 col-lg-6 wow tpfadeRight"
                         data-wow-duration=".9s"
                         data-wow-delay=".9s"
-                      >
-                        <div className="breadcrumb__main-img text-end">
+                      > */}
+                        {/* <div className="breadcrumb__main-img text-end">
                           <img
                             src={
                               postData.service.coverPhoto
@@ -97,9 +93,9 @@ function ServiceSlug() {
                                 : "something"
                             }
                             alt=""
-                          />
-                        </div>
-                      </div>
+                          /> */}
+                        {/* </div> */}
+                      {/* </div> */}
                     </div>
                   </div>
                 </div>
