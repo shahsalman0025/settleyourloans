@@ -83,13 +83,12 @@ export const json = {
         "description": "कुल क्रेडिट कार्ड बकाया *",
         "isRequired": true,
         "choices": [
-         "Rs. 5-6 lacs",
-         "No Dues",
-         "Less that Rs. 1 lac",
+          "No Dues",
          "Rs. 1-2 lacs",
          "Rs. 3-4 lacs",
          "Rs. 4-5 lacs",
          "Rs. 5-10 lacs",
+         "Less that Rs. 1 lac",
          "More than Rs.10 lacs"
         ]
        },
@@ -100,7 +99,6 @@ export const json = {
         "description": "कुल व्यक्तिगत ऋण राशि*",
         "isRequired": true,
         "choices": [
-         "Rs. 5-6 lacs",
          "No Dues",
          "Less that Rs. 1 lac",
          "Rs. 1-2 lacs",
@@ -124,7 +122,7 @@ export const json = {
        {
         "type": "dropdown",
         "name": "question11",
-        "title": "harassment",
+        "title": "Harassment",
         "description": "क्या आप किसी उत्पीड़न का सामना कर रहे हैं? *",
         "isRequired": true,
         "choices": [
