@@ -25,6 +25,7 @@ function Hero() {
   const [ipAddress, setIPAddress] = useState('')
   const [disableButton, setDisableButton] = useState(false)
   const [emailError, setEmailError] = useState(false);
+  const [address, setAddress] = useState('');
   const [numberError, setNumberError] = useState(false);
 
   useEffect(() => {
@@ -145,7 +146,8 @@ function Hero() {
         settlementProcess: settlementProcess,
         monthlyIncome: monthlyIncome,
         date: Date.now(),
-        ip: ipAddress
+        ip: ipAddress,
+        address:address
       }).then((val) => {
         navigate('/thanks/' + val.id);
         setLoader(true);
@@ -353,22 +355,72 @@ function Hero() {
                     </div>
                     <div className="mb-6">
                       <label
-                        htmlFor="debt-amount"
+                        htmlFor="address"
                         className="block mb-2 text-sm font-medium text-gray-900"
                       >
-                        Total Debt Amount
+                       Address
                       </label>
                       <input
                         type="number"
-                        id="debt-amount"
+                        id="address"
                         className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
-                        placeholder="2500000"
+                        placeholder="PAN India"
                         required
                         onChange={(e) => {
-                          setDebtAmount(e.target.value);
+                          setAddress(e.target.value);
                         }}
                       />
                     </div>
+
+
+
+
+
+<div className="col-sm-12">
+                      <div className="postbox__contact-input">
+                        <label
+                          htmlFor="TotalDebtAmount"
+                          className="block mb-2 text-sm font-medium text-gray-900"
+                        >
+                          Total Debt Amount
+                        </label>
+                        <select
+                          id=" TotalDebtAmount"
+                          required
+                          onChange={(e) => {
+                            setDebtAmount(e.target.value);
+                          }}
+                          className="mb-[20px] bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                        >
+                       
+                       
+                       
+                        
+                      
+                        
+                          <option selected="">Choose a option</option>
+                          <option value="Below 1 lakh">
+                          Below 1 lakh
+                          </option>
+                          <option value=" 1 - 2 Lakhs ">
+                          1 - 2 Lakhs 
+                          </option>
+                          <option value="2 - 5 Lakhs">
+                          2 - 5 Lakhs
+                          </option>
+                          <option value=" 5 - 8 Lakhs">
+                          5 - 8 Lakhs
+                          </option>
+                          <option value="8 - 10 Lakhs">
+                          8 - 10 Lakhs
+                          </option>
+                          <option value="  10 and above ">
+                          10 and above 
+                          </option>
+                        </select>
+                      </div>
+                    </div>
+{/*  */}
                     {/* <div className="col-sm-6">
                       <div className="postbox__contact-input">
                         <input
@@ -476,7 +528,7 @@ function Hero() {
                             Rs.75,000-1,00,000 per month
                           </option>
                           <option value="More than 1,00,000 permonth">
-                            More than 1,00,000 permonth
+                            More than 1,00,000 per month
                           </option>
                         </select>
                       </div>
