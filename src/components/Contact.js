@@ -195,7 +195,7 @@ function Contact() {
                     </span>
                   </div>
                   <div className="contact__content">
-                    <h4 className="contact__title-sm">Your Message</h4>
+                    <h4 className="contact__title-sm">Message Us</h4>
                     <span>
                       <a href="/cdn-cgi/l/email-protection#7c1d111d0e3c111d1510521f1311">
                         <span
@@ -228,7 +228,7 @@ function Contact() {
                     </span>
                   </div>
                   <div className="contact__content">
-                    <h4 className="contact__title-sm">Your location</h4>
+                    <h4 className="contact__title-sm">Our location</h4>
                     <span>
                       <a href="">PAN India</a>
                     </span>
