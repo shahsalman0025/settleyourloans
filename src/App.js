@@ -34,9 +34,12 @@ import Modal from "./components/Modal";
 import NewBlogs from "./Screens/Blogs/NewBlogs";
 import FAQ from "./Screens/FAQ";
 import Banks from "./components/banks";
+import AppModal from "./Screens/Modals/AppModal";
 function App() {
   return (
-    <div className="App">
+ <>
+ 
+ <div className="App">
       <Router>
         <Routes>
           <Route path="/" element={<Home />}></Route>
@@ -60,6 +63,10 @@ function App() {
         <FooterTwo />
       </Router>
     </div>
+  
+    <AppModal/>
+
+ </>
   );
 }
 

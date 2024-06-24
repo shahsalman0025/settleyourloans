@@ -7,3 +7,14 @@
 .banks-bg {
   margin: 70px 0px;
 }
+.comingsoon-btn{
+  margin-left: 10px;
+  border: 2px solid white;
+  border-radius: 5px;
+}
+.comingsoon-btn img{
+  border-radius: 5px;
+}
+.comingsoon-btn:hover{
+  scale: 1.2;
+}

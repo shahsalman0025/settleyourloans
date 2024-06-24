@@ -19,6 +19,7 @@ import {Helmet} from "react-helmet";
 import Reviews from "../components/Reviews";
 import GoogleReviews from "../components/googleReviews";
 import InstaStory from "../components/InstaStory";
+import AppModal from "./Modals/AppModal";
 
 function Home() {
   return (
