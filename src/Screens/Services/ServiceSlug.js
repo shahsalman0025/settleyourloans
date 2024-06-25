@@ -68,11 +68,11 @@ function ServiceSlug() {
                     <h2>Settle Loans</h2>
                   </div>
                   <div className="container-fluid">
-                    <div className="row align-items-center">
+                    <div className="row items-center justify-center">
                       <div className="col-xxl-6 col-xl-6 col-lg-6">
                         <div className="breadcrumb__content z-index">
                           <h3
-                            className="breadcrumb__title char-anim wow tpfadeUp row align-items-center"
+                            className="breadcrumb__title char-anim wow tpfadeUp row items-center justify-center "
                             data-wow-duration=".9s"
                             data-wow-delay=".3s"
                           >
