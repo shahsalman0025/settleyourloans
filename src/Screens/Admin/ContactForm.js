@@ -5,6 +5,7 @@ import ContactFormData from "./ContactFormData";
 import { db } from "../../firebase";
 import { collection, getDocs } from "firebase/firestore";
 import PELoader from "../../Screens/Utils/PELoader";
+import ExportCSV from "./ExportCSV";
 
 function ContactForm() {
   const [homeData, setHomeData] = useState([]);
@@ -50,6 +51,7 @@ function ContactForm() {
 
           <HeaderAdmin />
           <div className="max-w-7xl mx-auto sm:px-6 lg:px-8 pt-52">
+          <ExportCSV list={homeData} filename={"Contact Form"}/>
 
             <div className="flex flex-col">
               <div className="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">

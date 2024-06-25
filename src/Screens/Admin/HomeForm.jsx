@@ -5,8 +5,8 @@ import ViewModal from "./ViewModal";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 import { collection, deleteDoc, doc, getDocs } from "firebase/firestore";
 import { db } from "../../firebase";
-import PELoader from "../../Screens/Utils/PELoader";
-
+import PELoader from "../Utils/PELoader";
+import ExportCSV from './ExportCSV';
 
 function HomeForm() {
   const [homeData, setHomeData] = useState([]);
@@ -68,10 +68,14 @@ function HomeForm() {
 
           <HeaderAdmin />
           <div className="max-w-7xl mx-auto sm:px-6 lg:px-8 pt-52">
+          <ExportCSV list={homeData} filename={"Home Form"}/>
+
             <div className="flex flex-col">
               <div className="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
                 <div className="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
                   <div className="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
+
+
                     <table className="min-w-full divide-y divide-gray-200">
                       <thead className="bg-gray-50">
                         <tr>
