@@ -11,17 +11,18 @@
     background-color: rgba(0, 0, 0, 0.75) !important;
 }
 .AppModal{
-    height: 300px;
+   
     width: 600px;
     border-radius: 20px;
-    box-shadow: rgba(255, 255, 255, 0.2) 0px 7px 29px 0px;
+    box-shadow:rgba(255, 255, 255, 0.5) 0px 2px 21px 11px
 }
 .AppModal-header{
     background-color: #404040;
 height: 50px;
 display: flex;
 justify-content: end;
-border-radius: 20px;
+border-radius: 20px 20px 0px 0px ;
+
 
 }
 .close{
@@ -37,7 +38,7 @@ border-radius:100% ;
 }
 .AppModal-footer{
     border-radius: 0px 0px 20px 20px ;
-    box-shadow: rgba(255, 255, 255, 0.2) 0px 7px 29px 0px;
+
   
     background-color: #404040;
     display: flex;

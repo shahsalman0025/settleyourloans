@@ -19,22 +19,32 @@ const ExportCSV = ({ list, filename }) => {
   );
 };
 
-const convertListToCSV = (list) => {
-  if (!list.length) {
-    return null;
+const convertListToCSV = (data) => {
+  if (!data.length) {
+    return '';
   }
-  
-  const keys = Object.keys(list[0]);
-  const csvRows = list.map(item => 
-    keys.map(key => JSON.stringify(item[key], replacer)).join(',')
+
+  // Extract all possible keys
+  const keys = [...new Set(data.flatMap(Object.keys))];
+
+  // Create CSV header
+  const csvHeader = keys.join(',');
+
+  // Create CSV rows
+  const csvRows = data.map(row =>
+    keys.map(key => {
+      let value = row[key];
+      if (key === 'date') {
+        value = new Date(value).toLocaleString(); // Convert timestamp to readable date
+      }
+      return value !== undefined ? `"${value}"` : '';
+    }).join(',')
   );
 
-  csvRows.unshift(keys.join(','));
-
-  return csvRows.join('\n');
+  return [csvHeader, ...csvRows].join('\n');
 };
 
-const replacer = (key, value) => value === null ? '' : value;
+
 
 const downloadCSV = (csv, filename) => {
   const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
