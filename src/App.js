@@ -43,12 +43,10 @@ function App() {
       <Router>
         <Routes>
           <Route path="/" element={<Home />}></Route>
-          <Route path="banks" element={<Banks />}></Route>
           <Route path="/faq" element={<FAQ />}></Route>
           <Route path="/form" element={<Modal />}></Route>
           <Route path="/about" element={<About />}></Route>
           <Route path="/contact" element={<ContactScreen />}></Route>
-          <Route path="/debt-free-solutions" element={<DebtFree />}></Route>
           <Route path="/blogs" element={<Blogs />}></Route>
           <Route path="/blog/:slug" element={<BlogSlug />}></Route>
           <Route path="/service/:slug" element={<ServiceSlug />}></Route>
