@@ -31,6 +31,9 @@ function HomeFormData({ person, personIdx, deleteBtnClick, viewBtnClick }) {
       <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
         {person.areYouFacing === true ? "Yes" : "No"}
       </td>
+      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+        {person.address ? person.address : "No Address"}
+      </td>
       {/* <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
         <a
           href="#"

@@ -322,13 +322,21 @@ function Hero() {
                           Number
                         </label>
                         <input
+                        value={number}
                           type="number"
                           id="number"
                           className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
                           placeholder="91XXXXXX"
                           required
                           onChange={(e) => {
-                            setNumber(e.target.value);
+                            if (e.target.value.length <= 10) {
+                           
+                               setNumber(e.target.value);
+setNumberError("")
+                            }else{
+                              setNumberError("Number can only contain 10 Digits")
+                            }
+                     
                           }}
                         />
                         {numberError && <p className="text-red-500">{numberError}</p>}
