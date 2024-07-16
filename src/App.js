@@ -62,7 +62,7 @@ function App() {
       </Router>
     </div>
   
-    <AppModal/>
+    {/* <AppModal/> */}
 
  </>
   );
