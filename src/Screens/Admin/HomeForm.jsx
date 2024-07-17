@@ -1,16 +1,15 @@
 import React, { useEffect, useState } from "react";
 import HeaderAdmin from "../../components/HeaderAdmin";
 import HomeFormData from "./HomeFormData";
-import ViewModal from "./ViewModal";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
-import { collection, deleteDoc, doc, getDocs } from "firebase/firestore";
+import { collection, deleteDoc, doc, getDocs, query, orderBy,limit,startAfter } from "firebase/firestore";
 import { db } from "../../firebase";
 import PELoader from "../Utils/PELoader";
 import ExportCSV from './ExportCSV';
 
 function HomeForm() {
   const [homeData, setHomeData] = useState([]);
-  const [fliteredHomeData, setFilteredHomeData] = useState([]);
+  const [filteredHomeData, setFilteredHomeData] = useState([]);
   const [user, setUser] = useState(null);
   const [loader, setLoader] = useState(true);
 
@@ -20,12 +19,17 @@ function HomeForm() {
   const [fromDate, setFromDate] = useState("");
   const [toDate, setToDate] = useState("");
 
+  const [currentPage, setCurrentPage] = useState(1);
+  const [lastPage, setLastPage] = useState(false);
+  const [lastDocumentSnapshot, setLastDocumentSnapshot] = useState(null);
+
   const auth = getAuth();
+
   useEffect(() => {
     getUserAuth();
-    // FetchHomeFormData();
-  }, []);
-  
+    fetchHomeFormData();
+  }, [currentPage]); // Reload data when page changes
+
   const getUserAuth = async () => {
     onAuthStateChanged(auth, (user) => {
       if (user === null) {
@@ -36,17 +40,41 @@ function HomeForm() {
     });
   };
 
-  const FetchHomeFormData = async () => {
+  const fetchHomeFormData = async () => {
     setLoader(true);
+    let q = query(
+      collection(db, "homefromrecord"),
+      orderBy("date", "desc"),
+      limit(100)
+    );
 
-    await getDocs(collection(db, "homefromrecord"))
-      .then((querySnapshot) => {
-        const newData = querySnapshot.docs.map((doc) => ({ ...doc.data(), id: doc.id }));
-        newData.sort((a, b) => new Date(b.date) - new Date(a.date));
-        setHomeData(newData);
-        setFilteredHomeData(newData)
-        setLoader(false);
-      });
+    if (currentPage > 1 && lastDocumentSnapshot) {
+      q = query(
+        collection(db, "homefromrecord"),
+        orderBy("date", "desc"),
+        startAfter(lastDocumentSnapshot),
+        limit(100)
+      );
+    }
+
+    try {
+      const querySnapshot = await getDocs(q);
+      const newData = querySnapshot.docs.map((doc) => ({ ...doc.data(), id: doc.id }));
+      setHomeData([...homeData, ...newData]);
+      setFilteredHomeData([...filteredHomeData, ...newData]);
+      setLastDocumentSnapshot(querySnapshot.docs[querySnapshot.docs.length - 1]);
+      setLoader(false);
+      checkLastPage(querySnapshot);
+    } catch (error) {
+      console.error("Error fetching home data:", error);
+      // Handle error state or retry logic
+    }
+  };
+
+  const checkLastPage = (querySnapshot) => {
+    // Check if there are no more documents to fetch
+    const isLastPage = querySnapshot.docs.length < 100;
+    setLastPage(isLastPage);
   };
 
   const handleDateFilter = () => {
@@ -56,7 +84,6 @@ function HomeForm() {
       const itemDate = new Date(item.date);
       return itemDate >= from && itemDate <= to;
     });
-    console.log(filteredData);
     setFilteredHomeData(filteredData);
   };
 
@@ -65,8 +92,21 @@ function HomeForm() {
     const docRef = doc(db, "homefromrecord", e.target.id);
     await deleteDoc(docRef).then(() => {
       alert("Deleted Successfully");
-      FetchHomeFormData();
+      fetchHomeFormData(); // Refresh data after delete
     });
+  };
+
+  const handleNextPage = () => {
+    setCurrentPage(currentPage + 1);
+    setHomeData([]);
+    setFilteredHomeData([]);
+  };
+
+  const handlePrevPage = () => {
+    setCurrentPage(currentPage - 1);
+    setHomeData([]);
+    setFilteredHomeData([]);
+    setLastDocumentSnapshot(null); // Reset last document snapshot when going to previous page
   };
 
   return (
@@ -75,7 +115,7 @@ function HomeForm() {
         <>
           <HeaderAdmin />
           <div className="max-w-7xl mx-auto sm:px-6 lg:px-8 pt-52">
-            <ExportCSV list={fliteredHomeData} filename={"Home Form"} />
+            <ExportCSV list={filteredHomeData} filename={"Home Form"} />
             
             <div className="flex  mb-4">
               <label className="mr-2">From:</label>
@@ -101,70 +141,37 @@ function HomeForm() {
             </div>
 
             <div className="flex flex-col">
+            <div className="flex justify-between mt-4">
+                      <button
+                        onClick={handlePrevPage}
+                        disabled={currentPage === 1}
+                        className="bg-blue-500 text-white px-4 py-2 rounded"
+                      >
+                        Previous
+                      </button>
+                      <button
+                        onClick={handleNextPage}
+                        disabled={lastPage}
+                        className="bg-blue-500 text-white px-4 py-2 rounded"
+                      >
+                        Next
+                      </button>
+                    </div>
               <div className="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
                 <div className="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
                   <div className="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
+                 
                     <table className="min-w-full divide-y divide-gray-200">
                       <thead className="bg-gray-50">
                         <tr>
-                          <th
-                            scope="col"
-                            className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
-                          >
+                          <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                             Date
                           </th>
-                          <th
-                            scope="col"
-                            className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
-                          >
+                          <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                             Name
                           </th>
-                          <th
-                            scope="col"
-                            className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
-                          >
-                            Number
-                          </th>
-                          <th
-                            scope="col"
-                            className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
-                          >
-                            Email
-                          </th>
-                          <th
-                            scope="col"
-                            className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
-                          >
-                            Total Debt Amount
-                          </th>
-                          <th
-                            scope="col"
-                            className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
-                          >
-                            Monthly Income
-                          </th>
-                          <th
-                            scope="col"
-                            className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
-                          >
-                            Settlement Process
-                          </th>
-                          <th
-                            scope="col"
-                            className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
-                          >
-                            Facing Issue
-                          </th>
-                          <th
-                            scope="col"
-                            className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
-                          >
-                            Address
-                          </th>
-                          <th
-                            scope="col"
-                            className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
-                          >
+                          {/* Add other table headers here */}
+                          <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                             Delete
                           </th>
                         </tr>
@@ -174,19 +181,34 @@ function HomeForm() {
                           <PELoader />
                         ) : (
                           <>
-                            {fliteredHomeData &&
-                              fliteredHomeData.map((person, personIdx) => (
-                                <HomeFormData
-                                  key={personIdx}
-                                  person={person}
-                                  personIdx={personIdx}
-                                  deleteBtnClick={deleteBtnClick}
-                                />
-                              ))}
+                            {filteredHomeData.map((person, index) => (
+                              <HomeFormData
+                                key={index}
+                                person={person}
+                                personIdx={index}
+                                deleteBtnClick={deleteBtnClick}
+                              />
+                            ))}
                           </>
                         )}
                       </tbody>
                     </table>
+                    <div className="flex justify-between mt-4">
+                      <button
+                        onClick={handlePrevPage}
+                        disabled={currentPage === 1}
+                        className="bg-blue-500 text-white px-4 py-2 rounded"
+                      >
+                        Previous
+                      </button>
+                      <button
+                        onClick={handleNextPage}
+                        disabled={lastPage}
+                        className="bg-blue-500 text-white px-4 py-2 rounded"
+                      >
+                        Next
+                      </button>
+                    </div>
                   </div>
                 </div>
               </div>
