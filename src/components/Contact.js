@@ -230,7 +230,7 @@ function Contact() {
                   <div className="contact__content">
                     <h4 className="contact__title-sm">Our location</h4>
                     <span>
-                      <a href="">PAN India</a>
+                      <a href="">Block G, Sushant Lok 2, Sector 57, Gurugram, Haryana 122003</a>
                     </span>
                   </div>
                 </div>
