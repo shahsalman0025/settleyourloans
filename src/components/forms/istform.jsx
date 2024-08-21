@@ -11,22 +11,23 @@ import { db } from "../../firebase";
 function SurveyComponent() {
     const survey = new Model(json);
     survey.applyTheme(themeJson);
-    survey.onComplete.add((sender, options) => {
-    
-       SendData(sender.data)
+
+    survey.onComplete.add((sender) => {
+        SendData(sender.data);
     });
-    
-   async function SendData(Data) {
-    let x=Data;
-    x['created']= Date.now()
+
+    async function SendData(data) {
+        data['created'] = Date.now();
         try {
-            await addDoc(collection(db, 'ContactPageForm'), Data)
-      
-          } catch (error) {
-        
-          }
+            await addDoc(collection(db, 'ContactPageForm'), data);
+            window.location.href = 'https://pmny.in/vrb1u30nOeZB'; 
+        } catch (error) {
+            console.error("Error adding document: ", error);
+           
+        }
     }
-    return (<Survey model={survey} />);
+
+    return <Survey model={survey} />;
 }
 
 export default SurveyComponent;
