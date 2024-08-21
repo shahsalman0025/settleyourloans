@@ -1,6 +1,6 @@
 export const json = {
     "logoPosition": "right",
-    "completedHtml": "<h3>Thank you</h3><p><a href='https://amalegalsolutions.com/seervices/'>Go to the Payment Page</a></p>",
+    "completedHtml": "href='https://amalegalsolutions.com/seervices/",
     "pages": [
      {
       "name": "page1",
