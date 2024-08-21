@@ -1,6 +1,6 @@
 export const json = {
     "logoPosition": "right",
-    "completedHtml": "<a href='https://pmny.in/vrb1u30nOeZB'></a>",
+    "completedHtml": "<p><a href='https://pmny.in/vrb1u30nOeZB'>Pay Now</a></p>",
     "pages": [
      {
       "name": "page1",
