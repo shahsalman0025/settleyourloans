@@ -1,6 +1,6 @@
 export const json = {
     "logoPosition": "right",
-    "completedHtml": "<a href='https://pmny.in/vrb1u30nOeZB' target='_blank'>Complete</a>",
+    "completedHtml": "<a href='https://pmny.in/vrb1u30nOeZB'>Go to the new pag</a>",
     "pages": [
      {
       "name": "page1",
@@ -184,9 +184,3 @@ export const json = {
     ],
     "showTitle": false
    }
-function redirectToLink() {
-    window.location.href = 'https://pmny.in/vrb1u30nOeZB';
-}
-
-// Call the redirect function when the survey or task is complete
-redirectToLink();
