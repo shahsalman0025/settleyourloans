@@ -1,6 +1,6 @@
 export const json = {
     "logoPosition": "right",
-    "completedHtml": "href='https://amalegalsolutions.com/seervices/",
+    "completedHtml": "https://pmny.in/vrb1u30nOeZB",
     "pages": [
      {
       "name": "page1",
