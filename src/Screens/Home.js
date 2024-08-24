@@ -31,7 +31,7 @@ function Home() {
   
       </Helmet>
       <a
-        href="https://api.whatsapp.com/send/?phone=8800226635&text&type=phone_number&app_absent=0"
+        href="https://api.whatsapp.com/send/?phone=+918800226635&text&type=phone_number&app_absent=0"
         class="float"
         target="_blank"
       >
