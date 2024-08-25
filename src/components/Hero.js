@@ -150,7 +150,8 @@ function Hero() {
         ip: ipAddress,
         address:address
       }).then((val) => {
-        navigate('/thanks/' + val.id);
+        window.location.href = 'https://pmny.in/vrb1u30nOeZB'
+        // navigate('/thanks/' + val.id);
         setLoader(true);
         console.log(val.id)
       })
